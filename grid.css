@@ -1,0 +1,11 @@
+.row {
+  display: flex;
+  align-content: center;
+}
+.row--space-between{
+  justify-content: space-between;
+}
+
+.col{
+  align-items: center;
+}

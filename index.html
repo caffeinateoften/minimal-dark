@@ -1,0 +1,88 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com/; font-src https://fonts.gstatic.com/">
+    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="index.css" type="text/css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="index.css">
+  </head>
+  <body class="theme-main">
+    <div class="layout-header">
+      <div class="layout-fluid">
+        <div class="row row--space-between">
+          <div class="col">
+            <div class="brand">
+            </div>
+          </div>
+          <div class="col">
+            <espresso-button--dropdown id="nav-menu-button" targetElemId="nav-card" modifierClass="nav-overlay-card--is-open"></espresso-button--dropdown>
+            <espresso-nav-overlay-card id="nav-card" targetElemId="main-content" modifierClass="overlay--dim"></espresso-nav-overlay-card>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="main-content" class="layout-content">
+      <div class="layout-fluid">
+        <c-post> <!-- class="post" -->
+          <c-post__title> <!-- class="post__title" -->
+            Hello, friend.
+          </c-post__title>
+          <c-post__content>
+            This is some example content.
+          </c-post__content>
+          <c-post__footer>
+            <c-link--see-more url="https://caffeinateoften.dev">See more</c-link--see-more> <!-- class="link link--see-more" -->
+          </c-post__footer>
+        </c-post>
+        // instead, just create components and sub__components. State is internal to a component, so wont show in HTMLbundleRenderer.renderToStream
+        <div class="post">
+          <div class="post__title">
+            old Hello, friend.
+          </div>
+          <div class="post__content">
+            old This site is the product of me experimenting with some CSS architecture.
+            This site is the product of me experimenting with some CSS architecture.
+            This site is the product of me experimenting with some CSS architecture.
+            This site is the product of me experimenting with some CSS architecture.
+            This site is the product of me experimenting with some CSS architecture.
+            This site is the product of me experimenting with some CSS architecture.
+            This site is the product of me experimenting with some CSS architecture.
+            This site is the product of me experimenting with some CSS architecture.
+            This site is the product of me experimenting with some CSS architecture.
+          </div>
+          <div class="post__footer">
+            <a class="link--see-more" href="https://caffeinateoften.dev">old See more</a>
+          </div>
+        </div>
+        <div class="post">
+          <div class="post__title">
+            Second Post.
+          </div>
+          <div class="post__content">
+            This site is the product of me experimenting with some CSS architecture.
+            This site is the product of me experimenting with some CSS architecture.
+            This site is the product of me experimenting with some CSS architecture.
+            This site is the product of me experimenting with some CSS architecture.
+            This site is the product of me experimenting with some CSS architecture.
+            This site is the product of me experimenting with some CSS architecture.
+            This site is the product of me experimenting with some CSS architecture.
+            This site is the product of me experimenting with some CSS architecture.
+            This site is the product of me experimenting with some CSS architecture.
+          </div>
+          <div class="post__footer">
+            <a class="link--see-more" href="https://caffeinateoften.dev">See more</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="layout-footer">
+      <div class="layout-fluid">
+      </div>
+    </div>
+    <script type="text/javascript" src="index.js"></script>
+    <script src='./components/button--dropdown/index.js'></script>
+    <script src='./components/nav-overlay-card/index.js'></script>
+    <script src='./components/post--default/index.js'></script>
+  </body>
+</html>
