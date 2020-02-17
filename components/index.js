@@ -1,9 +1,6 @@
 'use strict';
-/**
- * 
- */
-customElements.define('c-btn--dropdown',
-  class extends HTMLElement {
+
+customElements.define('c-btn--dropdown', class extends HTMLElement {
     constructor() {
       super();
     }
@@ -34,14 +31,9 @@ customElements.define('c-btn--dropdown',
         this.append();
       });
     }
-  }
-);
+});
 
-/**
- * 
- */
-customElements.define('c-nav-overlay-card--absolute',
-  class extends HTMLElement {
+customElements.define('c-nav-overlay-card--absolute', class extends HTMLElement {
     constructor() {
       super();
     }
@@ -73,12 +65,8 @@ customElements.define('c-nav-overlay-card--absolute',
         this.append();
       });
     }
-  }
-);
+});
 
-/**
- * 
- */
 customElements.define('c-post', class extends HTMLElement {
   constructor() {
     super();
@@ -246,7 +234,6 @@ customElements.define('c-row', class extends HTMLElement {
     });
   }
 });
-
 
 customElements.define('c-row--center', class extends HTMLElement {
   constructor() {

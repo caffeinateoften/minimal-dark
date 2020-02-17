@@ -48,13 +48,32 @@
 
 .link-item{
   display: block;
+  position: relative;
 }
-.link-item--is-selected{}
+.link-item::before{
+  content: ' ';
+  left: -2rem;
+  transition: left ease-in .2s;
+}
+.link-item:hover::before{
+  content: ' ';
+  position: absolute;
+  height: 2rem;
+  width: .25rem;
+  left: -1rem;
+  top: .25rem;
+  background-color: white;
+}
 .link-item__title{
-  display: inline-block;
+  display: block;
+  font-weight: 600;
+  font-size: 1rem;
 }
 .link-item__description{
-  display: inline-block;
+  color: #D4D4D4;
+  display: block;
+  font-size: .8rem;
+  margin-bottom: 2rem;
 }
 
 .link{
