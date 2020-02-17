@@ -10,14 +10,31 @@
   <body class="theme-main">
     <div class="layout-header">
       <div class="layout-fluid">
+        <c-nav-overlay-card--absolute id="nav-card" onHoverTargetElemId="main-content" onHoverModifierClass="overlay--dim">
+          <div class="layout-content">
+            <div class="layout-fluid layout-stretch">
+              <c-row--stretch>
+                <c-col--vertically-center>
+                  <c-link-item>
+                    <c-link-item__title>one</c-link-item__title>
+                    <c-link-item__description>one description</c-link-item__description>
+                  </c-link-item>
+                  <c-link-item>
+                    <c-link-item__title>two</c-link-item__title>
+                    <c-link-item__description>two description</c-link-item__description>
+                  </c-link-item>
+                </c-col--vertically-center>
+              </c-row--stretch>
+            </div>
+          </div>
+        </c-nav-overlay-card--absolute>
         <c-row--space-between>
           <c-col>
             <c-brand>
             </c-brand>
           </c-col>
           <c-col>
-            <c-btn--dropdown id="nav-menu-button" targetElemId="nav-card" modifierClass="nav-overlay-card--is-open">Menu</c-btn--dropdown>
-            <c-nav-overlay-card id="nav-card" targetElemId="main-content" modifierClass="overlay--dim"></c-nav-overlay-card>
+            <c-btn--dropdown id="nav-menu-button" onHoverTargetElemId="nav-card" onHoverModifierClass="nav-overlay-card--is-open">Menu</c-btn--dropdown>
           </c-col>
         </c-row--space-between>
       </div>
@@ -40,7 +57,7 @@
             This site is the product of me experimenting with some CSS architecture.
           </c-post__content>
           <c-post__footer>
-            <c-link--see-more url="https://caffeinateoften.dev">See more</c-link--see-more> <!-- class="link link--see-more" -->
+            <c-link--see-more url="https://caffeinateoften.dev">See more</c-link--see-more>
           </c-post__footer>
         </c-post>
 

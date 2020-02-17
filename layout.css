@@ -11,6 +11,10 @@
   max-width: 1300px;
 }
 
+.layout-stretch {
+  height: 100%;
+}
+
 .layout-header {
   margin-top: 42px;
   margin-bottom: 154px;

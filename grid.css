@@ -2,10 +2,24 @@
   display: flex;
   align-content: center;
 }
+
+.row--stretch{
+  height: 100%;
+}
+
+.row--center{
+  justify-content: center;
+}
+
 .row--space-between{
   justify-content: space-between;
 }
 
-.col{
-  align-items: center;
+.row--space-around{
+  justify-content: center;
+}
+
+.col{}
+.col--vertically-center{
+  align-self: center;
 }

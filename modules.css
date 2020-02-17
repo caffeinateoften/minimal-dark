@@ -4,6 +4,7 @@
 .btn--dropdown{
   display: block;
   position: relative;
+  cursor: pointer;
 }
 .btn--dropdown::after{
   position: absolute;
@@ -13,19 +14,25 @@
   top: .4rem;
 }
 
+
+
 .nav-overlay-card{
   display: block;
+  height: 0px;
+  transition: height ease-in .1s, background-color ease-in .1s;
+  overflow: hidden;
+}
+.nav-overlay-card--absolute{
   z-index: 10;
   width: 100%;
   position: absolute;
   top: 0;
   left: 0;
-  height: 0px;
-  overflow: hidden;
 }
 .nav-overlay-card--is-open {
   background-color: #2A2A2A;
-  height: 300px;
+  height: 350px;
+  cursor: pointer;
 }
 
 .overlay--dim{
@@ -39,15 +46,23 @@
 .menu{}
 .menu--vertical{}
 
-.link-item{}
+.link-item{
+  display: block;
+}
 .link-item--is-selected{}
-.link-item__title{}
-.link-item__description{}
+.link-item__title{
+  display: inline-block;
+}
+.link-item__description{
+  display: inline-block;
+}
 
-.link{}
+.link{
+  cursor: pointer;
+}
 .link--basic{}
 .link--see-more{
-  display: block;
+  display: inline-block;
 }
 .link--see-more::after{
   content: ' \2192'

@@ -12,21 +12,21 @@ customElements.define('c-btn--dropdown',
         constructClassNames(this);
 
         /* public interface */
-        const targetId = this.getAttribute('targetElemId');
-        const modifierClass = this.getAttribute('modifierClass');
+        const onHoverTargetElemId = this.getAttribute('onHoverTargetElemId');
+        const onHoverModifierClass = this.getAttribute('onHoverModifierClass');
 
         /* get references to other elements */
-        const targetElem = document.getElementById(targetId);
+        const targetElem = document.getElementById(onHoverTargetElemId);
 
         /* construct self */
         this.addEventListener('mouseover', () => {
-          if (!targetElem.classList.contains(modifierClass)) {
-            targetElem.classList.add(modifierClass);
+          if (!targetElem.classList.contains(onHoverModifierClass)) {
+            targetElem.classList.add(onHoverModifierClass);
           }
         });
         targetElem.addEventListener('mouseleave', () => {
-          if(targetElem.classList.contains(modifierClass)){
-            targetElem.classList.remove(modifierClass)
+          if(targetElem.classList.contains(onHoverModifierClass)){
+            targetElem.classList.remove(onHoverModifierClass)
           }
         })
 
@@ -40,7 +40,7 @@ customElements.define('c-btn--dropdown',
 /**
  * 
  */
-customElements.define('c-nav-overlay-card',
+customElements.define('c-nav-overlay-card--absolute',
   class extends HTMLElement {
     constructor() {
       super();
@@ -50,25 +50,22 @@ customElements.define('c-nav-overlay-card',
         constructClassNames(this);
 
         /* public interface */
-        const targetId = this.getAttribute('targetElemId');
-        const modifierClass = this.getAttribute('modifierClass');
+        const onHoverTargetElemId = this.getAttribute('onHoverTargetElemId');
+        const onHoverModifierClass = this.getAttribute('onHoverModifierClass');
 
         /* get references to other elements */
-        const targetElem = document.getElementById(targetId);
+        const targetElem = document.getElementById(onHoverTargetElemId);
 
         /* construct self */
-        this.setAttribute('class', 'nav-overlay-card');
-        this.textContent = 'test';
-
         this.onmouseenter = () => {
-          if(!targetElem.classList.contains(modifierClass)){
-            targetElem.classList.add(modifierClass);
+          if(!targetElem.classList.contains(onHoverModifierClass)){
+            targetElem.classList.add(onHoverModifierClass);
           }
         }
 
         this.onmouseleave = () => {
-          if(targetElem.classList.contains(modifierClass)){
-            targetElem.classList.remove(modifierClass)
+          if(targetElem.classList.contains(onHoverModifierClass)){
+            targetElem.classList.remove(onHoverModifierClass)
           }
         }
 
@@ -142,6 +139,54 @@ customElements.define('c-link--see-more', class extends HTMLElement {
   }
 });
 
+customElements.define('c-link-item', class extends HTMLElement {
+  constructor() {
+    super();
+  }
+  connectedCallback() {
+    document.addEventListener("DOMContentLoaded", (event) => {
+      constructClassNames(this);
+      this.append();
+    });
+  }
+});
+
+customElements.define('c-link-item--is-selected', class extends HTMLElement {
+  constructor() {
+    super();
+  }
+  connectedCallback() {
+    document.addEventListener("DOMContentLoaded", (event) => {
+      constructClassNames(this);
+      this.append();
+    });
+  }
+});
+
+customElements.define('c-link-item__title', class extends HTMLElement {
+  constructor() {
+    super();
+  }
+  connectedCallback() {
+    document.addEventListener("DOMContentLoaded", (event) => {
+      constructClassNames(this);
+      this.append();
+    });
+  }
+});
+
+customElements.define('c-link-item__description', class extends HTMLElement {
+  constructor() {
+    super();
+  }
+  connectedCallback() {
+    document.addEventListener("DOMContentLoaded", (event) => {
+      constructClassNames(this);
+      this.append();
+    });
+  }
+});
+
 customElements.define('c-brand', class extends HTMLElement {
   constructor() {
     super();
@@ -166,6 +211,30 @@ customElements.define('c-col', class extends HTMLElement {
   }
 });
 
+customElements.define('c-row--stretch', class extends HTMLElement {
+  constructor() {
+    super();
+  }
+  connectedCallback() {
+    document.addEventListener("DOMContentLoaded", (event) => {
+      constructClassNames(this);
+      this.append();
+    });
+  }
+});
+
+customElements.define('c-col--vertically-center', class extends HTMLElement {
+  constructor() {
+    super();
+  }
+  connectedCallback() {
+    document.addEventListener("DOMContentLoaded", (event) => {
+      constructClassNames(this);
+      this.append();
+    });
+  }
+});
+
 customElements.define('c-row', class extends HTMLElement {
   constructor() {
     super();
@@ -178,7 +247,32 @@ customElements.define('c-row', class extends HTMLElement {
   }
 });
 
+
+customElements.define('c-row--center', class extends HTMLElement {
+  constructor() {
+    super();
+  }
+  connectedCallback() {
+    document.addEventListener("DOMContentLoaded", (event) => {
+      constructClassNames(this);
+      this.append();
+    });
+  }
+});
+
 customElements.define('c-row--space-between', class extends HTMLElement {
+  constructor() {
+    super();
+  }
+  connectedCallback() {
+    document.addEventListener("DOMContentLoaded", (event) => {
+      constructClassNames(this);
+      this.append();
+    });
+  }
+});
+
+customElements.define('c-row--space-around', class extends HTMLElement {
   constructor() {
     super();
   }
