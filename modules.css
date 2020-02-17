@@ -2,6 +2,7 @@
 
 .btn{}
 .btn--dropdown{
+  display: block;
   position: relative;
 }
 .btn--dropdown::after{
@@ -13,6 +14,7 @@
 }
 
 .nav-overlay-card{
+  display: block;
   z-index: 10;
   width: 100%;
   position: absolute;
@@ -23,7 +25,7 @@
 }
 .nav-overlay-card--is-open {
   background-color: #2A2A2A;
-  height: 250px;
+  height: 300px;
 }
 
 .overlay--dim{
@@ -44,7 +46,9 @@
 
 .link{}
 .link--basic{}
-.link--see-more{}
+.link--see-more{
+  display: block;
+}
 .link--see-more::after{
   content: ' \2192'
 }
@@ -53,16 +57,19 @@
 }
 
 .post{
+  display: block;
   padding-bottom: 154px;
 }
 .post__title{
+  display: block;
   font-size: 2rem;
   letter-spacing: .2rem;
   padding-bottom: 15px;
 }
 .post__content{
+  display: block;
   padding-bottom: 15px;
 }
-.post__footer{}
-
-.image{}
+.post__footer{
+  display: block;
+}
