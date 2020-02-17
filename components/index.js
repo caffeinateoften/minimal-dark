@@ -86,7 +86,7 @@ customElements.define('c-post__title', class extends HTMLElement {
   connectedCallback() {
     document.addEventListener("DOMContentLoaded", (event) => {
       constructClassNames(this);
-      this.setAttribute('id', encodeURIComponent(this.textContent.trim()));
+      this.setAttribute('id', encodeURIComponent(this.textContent.trim().toLowerCase()));
       this.append();
     });
   }
@@ -174,7 +174,7 @@ customElements.define('c-link-item', class extends HTMLElement {
     document.addEventListener("DOMContentLoaded", (event) => {
       constructClassNames(this);
       const anchorTag = document.createElement('a');
-      anchorTag.href = '#' + encodeURIComponent(this.children[0].textContent.trim());
+      anchorTag.href = '#' + encodeURIComponent(this.children[0].textContent.trim().toLowerCase());
       anchorTag.appendChild(this.cloneNode(true));
       this.replaceWith(anchorTag);
       this.append();
