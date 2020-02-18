@@ -10,6 +10,7 @@
 ## Stretch Goals:
 - I shouldn't require custom element registration for unused CSS.
 - I should be able to detect at build time if I have a node/tag name that doesn't match a registered custom element.
+- Intellisense for something that calls this.getAttribute(VALUE) where VALUE shows up if typing on that custom element in HTML.
 
 # Architecture Rules
 
