@@ -95,7 +95,13 @@ customElements.define('c-nav-overlay-card--absolute', class extends HTMLElement 
           if(!this.classList.contains(isOpenClass)){
             this.classList.add(isOpenClass);
           }
-        })
+        });
+        // support touch event too..
+        openOnHoverElem.addEventListener('touchstart', () => {
+          if(!this.classList.contains(isOpenClass)){
+            this.classList.add(isOpenClass);
+          }
+        });
 
         // close if target elem is clicked
         closeOnClickElem.addEventListener('click', () => {
@@ -103,6 +109,12 @@ customElements.define('c-nav-overlay-card--absolute', class extends HTMLElement 
             this.classList.remove(isOpenClass)
           }
         });
+        // support touch event too...
+        closeOnClickElem.addEventListener('touchstart', () => {
+          if(this.classList.contains(isOpenClass)){
+            this.classList.remove(isOpenClass)
+          }
+        })
 
         for(let i=0; i<closeOnClickElements.length; i++){
           closeOnClickElements[i].addEventListener('click', () => {
@@ -110,6 +122,12 @@ customElements.define('c-nav-overlay-card--absolute', class extends HTMLElement 
               this.classList.remove(isOpenClass)
             }
           });
+          // support touch event too...
+          closeOnClickElements[i].addEventListener('touchstart', () => {
+            if(this.classList.contains(isOpenClass)){
+              this.classList.remove(isOpenClass)
+            }
+          })
         }
 
         /* attach self to DOM */
