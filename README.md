@@ -1,4 +1,17 @@
-# Rules
+# tool-chain
+## Current Behavior:
+- Every block and element and --modifier level item defined in our modules.css stylesheet is expected to be registered as a custom element.
+(Note: Something with block--modifier automatically is given class="block block-modifier", and same goes for element level items)
+- At runtime (todo: move to build-time) an error is logged if no connectedCallback() function was provided for the block or element
+
+## Goals:
+- CSS Should drive the existance of our Modules/Components. The tool-chain can get smarter and stricter for SMACSS + BEM convention.
+
+## Stretch Goals:
+- I shouldn't require custom element registration for unused CSS.
+- I should be able to detect at build time if I have a node/tag name that doesn't match a registered custom element.
+
+# Architecture Rules
 
 - A custom HTML Element's logic must only worry about manipulating it's own classes (and not the classes of another HTML element)
 - A custom HTML Element's state should be represented by a BEM --state-modifier CSS class
