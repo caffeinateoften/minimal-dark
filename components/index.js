@@ -178,6 +178,8 @@ customElements.define('c-link--see-more', class extends HTMLElement {
       const url = this.getAttribute('url');
       const anchorTag = document.createElement('a');
       anchorTag.href = url;
+      anchorTag.rel = "noopener noreferrer";
+      anchorTag.target = "_blank";
       anchorTag.appendChild(this.cloneNode(true));
       this.replaceWith(anchorTag);
       this.append();
