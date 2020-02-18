@@ -10,3 +10,13 @@ a {
   text-decoration: none;
   color: white;
 }
+
+pre {
+  display: inline;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-weight: 450;
+  letter-spacing: 2px;
+  font-size: 1.5rem; 
+  font-family: monospace;
+}

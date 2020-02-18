@@ -25,11 +25,11 @@
                   <c-link-list>
                   <c-link-item>
                     <c-link-item__title>Hello, friend.</c-link-item__title>
-                    <c-link-item__description>I'm currently exp...</c-link-item__description>
+                    <c-link-item__description>Welcome.</c-link-item__description>
                   </c-link-item>
                   <c-link-item>
-                    <c-link-item__title>Hello, Lorem Ipsum.</c-link-item__title>
-                    <c-link-item__description>words words word...</c-link-item__description>
+                    <c-link-item__title>Mutation Observer.</c-link-item__title>
+                    <c-link-item__description>I recently learned about...</c-link-item__description>
                   </c-link-item>
 
                   <c-link-item>
@@ -77,26 +77,31 @@
             Hello, friend.
           </c-post__title>
           <c-post__content>
-            I'm currently experimenting with some web dev.
+            Welcome.
           </c-post__content>
           <c-post__footer>
-            <c-link--see-more url="https://caffeinateoften.dev">See more</c-link--see-more>
           </c-post__footer>
         </c-post>
 
         <c-post> 
           <c-post__title>
-            Hello, Lorem Ipsum.
+            Mutation Observer
           </c-post__title>
           <c-post__content>
-            words words words words words words words words words words words words words 
-            words words words words words words words words words words words words words 
-            words words words words words words words words words words words words words 
-            words words words words words words words words words words words words words
-            words words words words words words words words words words words words words 
+            I recently learned about the <pre>MutationObserver</pre> interface. The way I use it feels similar to adding some <pre>EventListener</pre> onto a target Node so that I can react to dispatched events.
+            However, this lets me react to something (e.g. an <pre>attribute</pre>) changing on the HTMLElement rather than to a normal event.
+            I like this mainly because I am already keeping UI component state in CSS classes.
+            I can observe a targetNode for mutations (where <pre>mutation.type="attribute"</pre>) and then check for the particular CSS <pre>--is-state</pre> class I'm looking for.
+            <br/>
+            <br/>
+            <strong>TL;DR</strong>
+            <ol class="tldr-list">
+              <li class="tldr-list__item">Let's me observe changes to an HTMLElement's attributes (rather than listening for particular events).</li>
+              <li class="tldr-list__item">Let's me decouple logic that should execute when an element is in a particular state from the events that might put said element into that state. (If I keep track of element state via CSS <pre>--is-state</pre> classes).</li>
+            </ol>
           </c-post__content>
           <c-post__footer>
-            <c-link--see-more url="https://caffeinateoften.dev">See more</c-link--see-more>
+            <c-link--see-more url="https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver">See more</c-link--see-more>
           </c-post__footer>
         </c-post>
 

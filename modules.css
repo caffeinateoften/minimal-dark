@@ -14,8 +14,6 @@
   top: .4rem;
 }
 
-
-
 .nav-overlay-card{
   display: block;
   height: 0px;
@@ -104,6 +102,13 @@
     background-color: #555;
 }
 
+.tldr-list{
+  display: block;
+}
+
+.tldr-list__item{
+  padding-bottom: .75rem;
+}
 
 .link-item{
   display: block;
@@ -162,6 +167,9 @@
 }
 .post__content{
   display: block;
+  line-height: 32px;
+  font-size: 1.1rem;
+  letter-spacing: .5px;
   padding-bottom: 15px;
 }
 .post__footer{
