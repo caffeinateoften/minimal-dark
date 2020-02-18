@@ -8,11 +8,15 @@ const exists = util.promisify(fs.exists);
 const mkdir = util.promisify(fs.mkdir);
 
 async function main(){
+  const gridCssFile = await readFile('../grid.css', 'utf-8');
   const modulesCssFile = await readFile('../modules.css', 'utf-8');
   const obj = css.parse(modulesCssFile);
+  const obj2 = css.parse(gridCssFile);
+
+  const rules = obj.stylesheet.rules.concat(obj2.stylesheet.rules);
 
   const validClassNames = [];
-  obj.stylesheet.rules.forEach(rule => {
+  rules.forEach(rule => {
     const selectors = rule.selectors;
     if(selectors.length === 1 && !selectors[0].includes(':') && selectors[0].charAt(0) === '.'){
       validClassNames.push(selectors[0])
@@ -65,6 +69,11 @@ function createRegisterCustomElementsCodeSnippet(){
   return `registerCustomElements(customElementNames, connectedCallbacks);
   
 function registerCustomElements(names, connectedCallbackFuncs){
+  Object.keys(connectedCallbackFuncs).map(nameFromCallbacksFile => {
+    if(!names.includes(nameFromCallbacksFile)){
+      throw 'ERROR. ' + nameFromCallbacksFile + ' is specified in your connectedCallbacks.js file, but it doesnt appear in your CSS files.';
+    }
+  })
   for(let i=0; i<names.length; i++){
     let name = names[i];
     let connectedCallbackFunc = connectedCallbackFuncs[name];

@@ -114,7 +114,6 @@ let connectedCallbacks = {
     });
   },
 
-  'c-link-item--is-selected': 'default',
   'c-brand': 'default',
 
   'c-main-content': function(){

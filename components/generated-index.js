@@ -2,7 +2,7 @@
 
 /* DO NOT EDIT. THIS FILE WAS AUTOMATICALLY GENERATED. */
 
-var customElementNames = ['c-nav-primary','c-btn','c-btn--dropdown','c-nav-overlay-card','c-nav-overlay-card--absolute','c-nav-overlay-card--is-open','c-overlay--dim','c-btn--rect','c-brand','c-menu','c-menu--vertical','c-main-content','c-link-list','c-tldr-list','c-tldr-list__item','c-link-item','c-link-item__title','c-link-item__description','c-link','c-link--basic','c-link--see-more','c-post','c-post__title','c-post__content','c-post__footer'];
+var customElementNames = ['c-nav-primary','c-btn','c-btn--dropdown','c-nav-overlay-card','c-nav-overlay-card--absolute','c-nav-overlay-card--is-open','c-overlay--dim','c-btn--rect','c-brand','c-menu','c-menu--vertical','c-main-content','c-link-list','c-tldr-list','c-tldr-list__item','c-link-item','c-link-item__title','c-link-item__description','c-link','c-link--basic','c-link--see-more','c-post','c-post__title','c-post__content','c-post__footer','c-row','c-row--stretch','c-row--center','c-row--space-between','c-row--space-around','c-col','c-col--vertically-center'];
 
 let connectedCallbacks = {
   'c-link--basic': 'default',
@@ -120,7 +120,6 @@ let connectedCallbacks = {
     });
   },
 
-  'c-link-item--is-selected': 'default',
   'c-brand': 'default',
 
   'c-main-content': function(){
@@ -176,6 +175,11 @@ let connectedCallbacks = {
 registerCustomElements(customElementNames, connectedCallbacks);
   
 function registerCustomElements(names, connectedCallbackFuncs){
+  Object.keys(connectedCallbackFuncs).map(nameFromCallbacksFile => {
+    if(!names.includes(nameFromCallbacksFile)){
+      throw 'ERROR. ' + nameFromCallbacksFile + ' is specified in your connectedCallbacks.js file, but it doesnt appear in your CSS files.';
+    }
+  })
   for(let i=0; i<names.length; i++){
     let name = names[i];
     let connectedCallbackFunc = connectedCallbackFuncs[name];
