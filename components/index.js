@@ -12,6 +12,60 @@ customElements.define('c-btn--dropdown', class extends HTMLElement {
     }
 });
 
+
+/* construct __element's before block__'s in case containing element does something like wrap its contents */
+customElements.define('c-link-item__title', class extends HTMLElement {
+  constructor() {
+    super();
+  }
+  connectedCallback() {
+    document.addEventListener("DOMContentLoaded", (event) => {
+      constructClassNames(this);
+      this.append();
+    });
+  }
+});
+
+customElements.define('c-link-item__description', class extends HTMLElement {
+  constructor() {
+    super();
+  }
+  connectedCallback() {
+    document.addEventListener("DOMContentLoaded", (event) => {
+      constructClassNames(this);
+      this.append();
+    });
+  }
+});
+
+customElements.define('c-link-item', class extends HTMLElement {
+  constructor() {
+    super();
+  }
+  connectedCallback() {
+    document.addEventListener("DOMContentLoaded", (event) => {
+      constructClassNames(this);
+      const anchorTag = document.createElement('a');
+      anchorTag.href = '#' + encodeURIComponent(this.children[0].textContent.trim().toLowerCase());
+      anchorTag.appendChild(this.cloneNode(true));
+      this.replaceWith(anchorTag);
+      this.append();
+    });
+  }
+});
+
+customElements.define('c-link-list', class extends HTMLElement {
+  constructor() {
+    super();
+  }
+  connectedCallback() {
+    document.addEventListener("DOMContentLoaded", (event) => {
+      constructClassNames(this);
+      this.append();
+    });
+  }
+});
+
 customElements.define('c-nav-overlay-card--absolute', class extends HTMLElement {
     constructor() {
       super();
@@ -28,10 +82,12 @@ customElements.define('c-nav-overlay-card--absolute', class extends HTMLElement 
 
         // the thing that can close this menu
         const closeOnClickId = this.getAttribute('closeOnClickId');
+        const closeOnClickClass = this.getAttribute('closeOnClickClass');
 
         /* get references to other elements that impact this element */
         const openOnHoverElem = document.getElementById(openOnHoverId);
         const closeOnClickElem = document.getElementById(closeOnClickId);
+        const closeOnClickElements = document.getElementsByClassName(closeOnClickClass);
       
         /* construct self */
         // open if target elem is hovered
@@ -46,7 +102,15 @@ customElements.define('c-nav-overlay-card--absolute', class extends HTMLElement 
           if(this.classList.contains(isOpenClass)){
             this.classList.remove(isOpenClass)
           }
-        })
+        });
+
+        for(let i=0; i<closeOnClickElements.length; i++){
+          closeOnClickElements[i].addEventListener('click', () => {
+            if(this.classList.contains(isOpenClass)){
+              this.classList.remove(isOpenClass)
+            }
+          });
+        }
 
         /* attach self to DOM */
         this.append();
@@ -128,58 +192,6 @@ customElements.define('c-link-item--is-selected', class extends HTMLElement {
   }
 });
 
-/* construct __element's before block__'s in case containing element does something like wrap its contents */
-customElements.define('c-link-item__title', class extends HTMLElement {
-  constructor() {
-    super();
-  }
-  connectedCallback() {
-    document.addEventListener("DOMContentLoaded", (event) => {
-      constructClassNames(this);
-      this.append();
-    });
-  }
-});
-
-customElements.define('c-link-item__description', class extends HTMLElement {
-  constructor() {
-    super();
-  }
-  connectedCallback() {
-    document.addEventListener("DOMContentLoaded", (event) => {
-      constructClassNames(this);
-      this.append();
-    });
-  }
-});
-
-customElements.define('c-link-item', class extends HTMLElement {
-  constructor() {
-    super();
-  }
-  connectedCallback() {
-    document.addEventListener("DOMContentLoaded", (event) => {
-      constructClassNames(this);
-      const anchorTag = document.createElement('a');
-      anchorTag.href = '#' + encodeURIComponent(this.children[0].textContent.trim().toLowerCase());
-      anchorTag.appendChild(this.cloneNode(true));
-      this.replaceWith(anchorTag);
-      this.append();
-    });
-  }
-});
-
-customElements.define('c-link-list', class extends HTMLElement {
-  constructor() {
-    super();
-  }
-  connectedCallback() {
-    document.addEventListener("DOMContentLoaded", (event) => {
-      constructClassNames(this);
-      this.append();
-    });
-  }
-});
 
 customElements.define('c-brand', class extends HTMLElement {
   constructor() {
@@ -203,8 +215,10 @@ customElements.define('c-main-content', class extends HTMLElement {
       const dimWhenOpenId = this.getAttribute('dimWhenOpenId');
       const openClassName = this.getAttribute('elemOpenClassName');
       const dimClass = this.getAttribute('dimClass');
+      const undimWhenElemsClickedClass = this.getAttribute('undimWhenElemsClickedClass');
 
       const dimWhenOpenTargetElem = document.getElementById(dimWhenOpenId);
+      const unDimWhenClickedElements = document.getElementsByClassName(undimWhenElemsClickedClass);
 
       const targetElemObserver = new MutationObserver((mutations) => {
         for(let i = 0; i<mutations.length; i++){
@@ -223,6 +237,15 @@ customElements.define('c-main-content', class extends HTMLElement {
           this.classList.remove(dimClass);
         }
       });
+
+      for(let i=0; i<unDimWhenClickedElements.length; i++){
+        unDimWhenClickedElements[i].addEventListener('click', () => {
+          if(this.classList.contains(dimClass)){
+            this.classList.remove(dimClass);
+          }
+        })
+      }
+      
       this.append();
     });
   }
