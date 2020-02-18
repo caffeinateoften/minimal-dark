@@ -200,23 +200,29 @@ customElements.define('c-main-content', class extends HTMLElement {
   connectedCallback() {
     document.addEventListener("DOMContentLoaded", (event) => {
       constructClassNames(this);
-      const dimOnHoverId = this.getAttribute('dimOnHoverId');
+      const dimWhenOpenId = this.getAttribute('dimWhenOpenId');
+      const openClassName = this.getAttribute('elemOpenClassName');
       const dimClass = this.getAttribute('dimClass');
 
-      const dimOnHoverTargetElem = document.getElementById(dimOnHoverId);
+      const dimWhenOpenTargetElem = document.getElementById(dimWhenOpenId);
 
-      dimOnHoverTargetElem.addEventListener('mouseenter', () => {
-        if(!this.classList.contains(dimClass)){
-          this.classList.add(dimClass);
+      const targetElemObserver = new MutationObserver((mutations) => {
+        for(let i = 0; i<mutations.length; i++){
+          const mutation = mutations[i];
+          if(mutation.type === 'attributes' && mutation.attributeName === 'class'){
+            if(dimWhenOpenTargetElem.classList.contains(openClassName) && !this.classList.contains(dimClass)){
+              this.classList.add(dimClass);
+            }
+          }
         }
-      })
+      });
+      targetElemObserver.observe(dimWhenOpenTargetElem, { attributes: true });
 
       this.addEventListener('click', () => {
         if(this.classList.contains(dimClass)){
           this.classList.remove(dimClass);
         }
       });
-
       this.append();
     });
   }
