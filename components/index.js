@@ -123,11 +123,11 @@ customElements.define('c-nav-overlay-card--absolute', class extends HTMLElement 
             }
           });
           // support touch event too...
-          closeOnClickElements[i].addEventListener('touchstart', () => {
+          /*closeOnClickElements[i].addEventListener('touchstart', () => {
             if(this.classList.contains(isOpenClass)){
               this.classList.remove(isOpenClass)
             }
-          })
+          })*/
         }
 
         /* attach self to DOM */
