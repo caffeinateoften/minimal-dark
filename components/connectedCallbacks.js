@@ -20,8 +20,10 @@ let connectedCallbacks = {
       constructClassNames(this);
       const anchorTag = document.createElement('a');
       anchorTag.href = '#' + encodeURIComponent(this.children[0].textContent.trim().toLowerCase());
-      anchorTag.appendChild(this.cloneNode(true));
-      this.replaceWith(anchorTag);
+      while(this.lastChild){
+        anchorTag.appendChild(this.firstChild);
+      }
+      this.appendChild(anchorTag);
       this.append();
     });
   },
