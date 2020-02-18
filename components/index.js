@@ -36,7 +36,6 @@ customElements.define('c-nav-overlay-card--absolute', class extends HTMLElement 
         /* construct self */
         // open if target elem is hovered
         openOnHoverElem.addEventListener('mouseenter', () => {
-          console.log('mouseenter', openOnHoverElem)
           if(!this.classList.contains(isOpenClass)){
             this.classList.add(isOpenClass);
           }
@@ -205,11 +204,8 @@ customElements.define('c-main-content', class extends HTMLElement {
       const dimClass = this.getAttribute('dimClass');
 
       const dimOnHoverTargetElem = document.getElementById(dimOnHoverId);
-      console.log(dimOnHoverTargetElem);
 
       dimOnHoverTargetElem.addEventListener('mouseenter', () => {
-        console.log('mouseenter2', dimOnHoverTargetElem);
-
         if(!this.classList.contains(dimClass)){
           this.classList.add(dimClass);
         }
