@@ -11,11 +11,17 @@
   <body class="theme-main">
     <div class="layout-header">
       <div class="layout-fluid">
-        <c-nav-overlay-card--absolute id="nav-card" onHoverTargetElemId="main-content" onHoverModifierClass="overlay--dim">
+        <c-nav-overlay-card--absolute
+            id="nav-card"
+            isOpenClass="nav-overlay-card--is-open"
+            openOnHoverId="nav-menu-button"
+            closeOnClickId="main-content"
+          >
           <div class="layout-content">
             <div class="layout-fluid layout-stretch">
               <c-row--stretch>
                 <c-col--vertically-center>
+                  <c-link-list>
                   <c-link-item>
                     <c-link-item__title>Hello, friend.</c-link-item__title>
                     <c-link-item__description>I'm currently exp...</c-link-item__description>
@@ -39,7 +45,7 @@
                     <c-link-item__title>Three.</c-link-item__title>
                     <c-link-item__description>words words word...</c-link-item__description>
                   </c-link-item>
-
+                </c-link-list>
                 </c-col--vertically-center>
               </c-row--stretch>
             </div>
@@ -51,12 +57,17 @@
             </c-brand>
           </c-col>
           <c-col>
-            <c-btn--dropdown id="nav-menu-button" onHoverTargetElemId="nav-card" onHoverModifierClass="nav-overlay-card--is-open">Menu</c-btn--dropdown>
+            <c-btn--dropdown id="nav-menu-button">Menu</c-btn--dropdown>
           </c-col>
         </c-row--space-between>
       </div>
     </div>
-    <div id="main-content" class="layout-content">
+    <c-main-content 
+      id="main-content"
+      class="layout-content"
+      dimOnHoverId="nav-card"
+      dimClass="overlay--dim"
+      >
       <div class="layout-fluid">
         <c-post> 
           <c-post__title>
@@ -82,7 +93,7 @@
             words words words words words words words words words words words words words 
           </c-post__content>
           <c-post__footer>
-            <c-link--see-more url="https://caffeinateoften.dev">See more</c-link--see-more> <!-- class="link link--see-more" -->
+            <c-link--see-more url="https://caffeinateoften.dev">See more</c-link--see-more>
           </c-post__footer>
         </c-post>
 
@@ -99,7 +110,7 @@
             words words words words words words words words words words words words words 
           </c-post__content>
           <c-post__footer>
-            <c-link--see-more url="https://caffeinateoften.dev">See more</c-link--see-more> <!-- class="link link--see-more" -->
+            <c-link--see-more url="https://caffeinateoften.dev">See more</c-link--see-more>
           </c-post__footer>
         </c-post>
 
@@ -117,7 +128,7 @@
             words words words words words words words words words words words words words 
           </c-post__content>
           <c-post__footer>
-            <c-link--see-more url="https://caffeinateoften.dev">See more</c-link--see-more> <!-- class="link link--see-more" -->
+            <c-link--see-more url="https://caffeinateoften.dev">See more</c-link--see-more>
           </c-post__footer>
         </c-post>
 
@@ -135,12 +146,12 @@
             words words words words words words words words words words words words words 
           </c-post__content>
           <c-post__footer>
-            <c-link--see-more url="https://caffeinateoften.dev">See more</c-link--see-more> <!-- class="link link--see-more" -->
+            <c-link--see-more url="https://caffeinateoften.dev">See more</c-link--see-more>
           </c-post__footer>
         </c-post>
 
       </div>
-    </div>
+    </c-main-content>
     <div class="layout-footer">
       <div class="layout-fluid">
       </div>

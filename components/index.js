@@ -7,27 +7,6 @@ customElements.define('c-btn--dropdown', class extends HTMLElement {
     connectedCallback() {
       document.addEventListener("DOMContentLoaded", (event) => {
         constructClassNames(this);
-
-        /* public interface */
-        const onHoverTargetElemId = this.getAttribute('onHoverTargetElemId');
-        const onHoverModifierClass = this.getAttribute('onHoverModifierClass');
-
-        /* get references to other elements */
-        const targetElem = document.getElementById(onHoverTargetElemId);
-
-        /* construct self */
-        this.addEventListener('mouseover', () => {
-          if (!targetElem.classList.contains(onHoverModifierClass)) {
-            targetElem.classList.add(onHoverModifierClass);
-          }
-        });
-        targetElem.addEventListener('mouseleave', () => {
-          if(targetElem.classList.contains(onHoverModifierClass)){
-            targetElem.classList.remove(onHoverModifierClass)
-          }
-        })
-
-        /* attach self to DOM */
         this.append();
       });
     }
@@ -41,25 +20,34 @@ customElements.define('c-nav-overlay-card--absolute', class extends HTMLElement 
       document.addEventListener("DOMContentLoaded", (event) => {
         constructClassNames(this);
 
-        /* public interface */
-        const onHoverTargetElemId = this.getAttribute('onHoverTargetElemId');
-        const onHoverModifierClass = this.getAttribute('onHoverModifierClass');
+        // the class that says whether the state of this nav-overlay-card is OPEN
+        const isOpenClass = this.getAttribute('isOpenClass');
 
-        /* get references to other elements */
-        const targetElem = document.getElementById(onHoverTargetElemId);
+        // the thing that can open this menu
+        const openOnHoverId = this.getAttribute('openOnHoverId');
 
+        // the thing that can close this menu
+        const closeOnClickId = this.getAttribute('closeOnClickId');
+
+        /* get references to other elements that impact this element */
+        const openOnHoverElem = document.getElementById(openOnHoverId);
+        const closeOnClickElem = document.getElementById(closeOnClickId);
+      
         /* construct self */
-        this.onmouseenter = () => {
-          if(!targetElem.classList.contains(onHoverModifierClass)){
-            targetElem.classList.add(onHoverModifierClass);
+        // open if target elem is hovered
+        openOnHoverElem.addEventListener('mouseenter', () => {
+          console.log('mouseenter', openOnHoverElem)
+          if(!this.classList.contains(isOpenClass)){
+            this.classList.add(isOpenClass);
           }
-        }
+        })
 
-        this.onmouseleave = () => {
-          if(targetElem.classList.contains(onHoverModifierClass)){
-            targetElem.classList.remove(onHoverModifierClass)
+        // close if target elem is clicked
+        closeOnClickElem.addEventListener('click', () => {
+          if(this.classList.contains(isOpenClass)){
+            this.classList.remove(isOpenClass)
           }
-        }
+        })
 
         /* attach self to DOM */
         this.append();
@@ -182,6 +170,18 @@ customElements.define('c-link-item', class extends HTMLElement {
   }
 });
 
+customElements.define('c-link-list', class extends HTMLElement {
+  constructor() {
+    super();
+  }
+  connectedCallback() {
+    document.addEventListener("DOMContentLoaded", (event) => {
+      constructClassNames(this);
+      this.append();
+    });
+  }
+});
+
 customElements.define('c-brand', class extends HTMLElement {
   constructor() {
     super();
@@ -189,6 +189,38 @@ customElements.define('c-brand', class extends HTMLElement {
   connectedCallback() {
     document.addEventListener("DOMContentLoaded", (event) => {
       constructClassNames(this);
+      this.append();
+    });
+  }
+});
+
+customElements.define('c-main-content', class extends HTMLElement {
+  constructor() {
+    super();
+  }
+  connectedCallback() {
+    document.addEventListener("DOMContentLoaded", (event) => {
+      constructClassNames(this);
+      const dimOnHoverId = this.getAttribute('dimOnHoverId');
+      const dimClass = this.getAttribute('dimClass');
+
+      const dimOnHoverTargetElem = document.getElementById(dimOnHoverId);
+      console.log(dimOnHoverTargetElem);
+
+      dimOnHoverTargetElem.addEventListener('mouseenter', () => {
+        console.log('mouseenter2', dimOnHoverTargetElem);
+
+        if(!this.classList.contains(dimClass)){
+          this.classList.add(dimClass);
+        }
+      })
+
+      this.addEventListener('click', () => {
+        if(this.classList.contains(dimClass)){
+          this.classList.remove(dimClass);
+        }
+      });
+
       this.append();
     });
   }
