@@ -167,7 +167,7 @@
 }
 .post__content{
   display: block;
-  line-height: 32px;
+  line-height: 2rem;
   font-size: 1.1rem;
   letter-spacing: .5px;
   padding-bottom: 15px;

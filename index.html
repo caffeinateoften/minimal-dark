@@ -88,16 +88,16 @@
             Mutation Observer
           </c-post__title>
           <c-post__content>
-            I recently learned about the <pre>MutationObserver</pre> interface. The way I use it feels similar to adding some <pre>EventListener</pre> onto a target Node so that I can react to dispatched events.
-            However, this lets me react to something (e.g. an <pre>attribute</pre>) changing on the HTMLElement rather than to a normal event.
+            I recently learned about the <pre><code>MutationObserver</code></pre> interface. I currently use it like I would use a normal <pre><code>EventListener</code></pre>,
+            however, this lets me react to something (e.g. a changing HTMLElement <pre><code>attribute</code></pre>) rather than to a normal event.
             I like this mainly because I am already keeping UI component state in CSS classes.
-            I can observe a targetNode for mutations (where <pre>mutation.type="attribute"</pre>) and then check for the particular CSS <pre>--is-state</pre> class I'm looking for.
+            I can observe a targetNode for mutations (where <pre><code>mutation.type="attribute"</code></pre>) and then check for the particular CSS <pre><code>--is-state</code></pre> class I'm looking for.
             <br/>
             <br/>
             <strong>TL;DR</strong>
             <ol class="tldr-list">
               <li class="tldr-list__item">Let's me observe changes to an HTMLElement's attributes (rather than listening for particular events).</li>
-              <li class="tldr-list__item">Let's me decouple logic that should execute when an element is in a particular state from the events that might put said element into that state. (If I keep track of element state via CSS <pre>--is-state</pre> classes).</li>
+              <li class="tldr-list__item">Let's me decouple logic that should execute when an element is in a particular state from the events that might put said element into that state. (If I keep track of element state via CSS <pre><code><code>--is-state</code></code></pre> classes).</li>
             </ol>
           </c-post__content>
           <c-post__footer>

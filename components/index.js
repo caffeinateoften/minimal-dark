@@ -167,6 +167,7 @@ customElements.define('c-post__footer', class extends HTMLElement {
   }
 });
 
+// ToDo - Have tool-chain generate HTMLElement classes that properly extend from one another (e.g. c-link--see-more extends c-link)
 customElements.define('c-link--see-more', class extends HTMLElement {
   constructor() {
     super();
@@ -174,6 +175,11 @@ customElements.define('c-link--see-more', class extends HTMLElement {
   connectedCallback() {
     document.addEventListener("DOMContentLoaded", (event) => {
       constructClassNames(this);
+      const url = this.getAttribute('url');
+      const anchorTag = document.createElement('a');
+      anchorTag.href = url;
+      anchorTag.appendChild(this.cloneNode(true));
+      this.replaceWith(anchorTag);
       this.append();
     });
   }
