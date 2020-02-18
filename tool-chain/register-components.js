@@ -19,7 +19,7 @@ async function main(){
     }
   });
   
-  const dir = './output';
+  const dir = '../components';
   const dirExists = await exists(dir);
   if(!dirExists){
     await mkdir(dir);
@@ -28,65 +28,114 @@ async function main(){
     fs.mkdir(dir)
   }
 
-  let generatedCode = '';
-  validClassNames.forEach(className => {
-    className = 'c-' + className.slice(1); // add 'c-' prefix, remove '.' prefix
-    generatedCode += createRegisterElementCodeSnippet(className);
+ let customElementNames = [];
+  validClassNames.forEach(name => {
+    customElementNames.push('c-' + name.slice(1));
   })
+  let generatedCode = '';
+  generatedCode += createCustomElementNameArrayCodeSnippet(customElementNames);
+  generatedCode += await createConnectedCallbackFunctionsCodeSnippet(process.argv[2]);
+  generatedCode += createRegisterCustomElementsCodeSnippet();
   generatedCode += createHelperFunctionCodeSnippet();
-  await writeFile(dir + '/index.js', generatedCode);
+
+  await writeFile(dir + '/generated-index.js', generatedCode);
 
 }
 main().then().catch(e => {
   console.log(e);
 });
 
-function createRegisterElementCodeSnippet(elementName){
+async function createConnectedCallbackFunctionsCodeSnippet(path){
+  const connectedCallbackFuncs = await readFile(path);
   return `
-customElements.define('${elementName}', class extends HTMLElement {
-  constructor() {
-    super();
+${connectedCallbackFuncs}  
+`
+}
+
+function createCustomElementNameArrayCodeSnippet(names){
+  return `'use strict';
+
+/* DO NOT EDIT. THIS FILE WAS AUTOMATICALLY GENERATED. */
+
+var customElementNames = [${names.map(name => `'${name}'`)}];
+`
+}
+
+function createRegisterCustomElementsCodeSnippet(){
+  return `registerCustomElements(customElementNames, connectedCallbacks);
+  
+function registerCustomElements(names, connectedCallbackFuncs){
+  for(let i=0; i<names.length; i++){
+    let name = names[i];
+    let connectedCallbackFunc = connectedCallbackFuncs[name];
+
+    if(connectedCallbackFunc === 'default'){
+      connectedCallbackFunc = function(){
+        document.addEventListener("DOMContentLoaded", (event) => {
+          constructClassNames(this);
+          this.append();
+        });
+      }
+    }
+
+    if(!connectedCallbackFunc){
+      throw 'ERROR. ' + name + ' is missing in the connectedCallbackFuncs map. Every custom element should be provided a connected callback function.';
+    }
+    if(typeof connectedCallbackFunc !== 'function'){
+      throw 'ERROR. ' + name + '\\'s connectedCallbackFunc should be a function. ' + connectedCallbackFunc;
+    }
+    let customElementClass = createCustomElementBaseClass(connectedCallbackFunc)
+    customElements.define(name, customElementClass);
   }
-  connectedCallback() {
-    document.addEventListener("DOMContentLoaded", (event) => {
-      constructClassNames(this);
-      this.append();
-    });
+}
+
+function createCustomElementBaseClass(connectedCallbackFunc){
+  let baseClass = class extends HTMLElement {
+    constructor() {
+      super();
+    }
+  };
+  if(connectedCallbackFunc){
+    baseClass.prototype.connectedCallback = connectedCallbackFunc;
   }
-});
+  return baseClass;
+}
 `
 }
 
 function createHelperFunctionCodeSnippet(){
   return `
-  function constructClassNames(elem){
-    const name = elem.nodeName.toLowerCase().slice(2); // slice off the prefix for now
-    let BLOCK_NAME; // See BEM CSS Methodology
-    let ELEMENT_NAME;
-    let MODIFIER_NAME;
-    let textArrSplitByBlockDelimiter;
-    if(name.includes('__')){ // block__elem
-      textArrSplitByBlockDelimiter = name.split('__');
-      BLOCK_NAME = textArrSplitByBlockDelimiter[0];
-    }
-    if(textArrSplitByBlockDelimiter && textArrSplitByBlockDelimiter.includes('--')){ // block__elem--mod
-      let textArrSplitByStateDelimiter = textArrSplitByBlockDelimiter[1].split('--');
-      ELEMENT_NAME = textArrSplitByStateDelimiter[0];
-      MODIFIER_NAME = textArrSplitByStateDelimiter[1];
-    }
-    else if(name.includes('--')) { // block--mod
-      let nameSplitByStateDelimiter = name.split('--');
-      BLOCK_NAME = nameSplitByStateDelimiter[0];
-      MODIFIER_NAME = nameSplitByStateDelimiter[1];
-    }
-    else { // block
-      BLOCK_NAME = name;
-    }
-    let rootClass = BLOCK_NAME;
-    rootClass += ELEMENT_NAME ? '__' + ELEMENT_NAME : '';
-    let modifierClass = rootClass + (MODIFIER_NAME ? '--' + MODIFIER_NAME : '');
-    elem.classList.add(rootClass);
-    elem.classList.add(modifierClass);
+/**
+ * Todo: set class names at build step instead of runtime
+ */
+function constructClassNames(elem){
+  const name = elem.nodeName.toLowerCase().slice(2); // slice off the prefix for now
+  let BLOCK_NAME; // See BEM CSS Methodology
+  let ELEMENT_NAME;
+  let MODIFIER_NAME;
+  let textArrSplitByBlockDelimiter;
+  if(name.includes('__')){ // block__elem
+    textArrSplitByBlockDelimiter = name.split('__');
+    BLOCK_NAME = textArrSplitByBlockDelimiter[0];
   }
-  `
+  if(textArrSplitByBlockDelimiter && textArrSplitByBlockDelimiter.includes('--')){ // block__elem--mod
+    let textArrSplitByStateDelimiter = textArrSplitByBlockDelimiter[1].split('--');
+    ELEMENT_NAME = textArrSplitByStateDelimiter[0];
+    MODIFIER_NAME = textArrSplitByStateDelimiter[1];
+  }
+  else if(name.includes('--')) { // block--mod
+    let nameSplitByStateDelimiter = name.split('--');
+    BLOCK_NAME = nameSplitByStateDelimiter[0];
+    MODIFIER_NAME = nameSplitByStateDelimiter[1];
+  }
+  else { // block
+    BLOCK_NAME = name;
+  }
+  let rootClass = BLOCK_NAME;
+  rootClass += ELEMENT_NAME ? '__' + ELEMENT_NAME : '';
+  let modifierClass = rootClass + (MODIFIER_NAME ? '--' + MODIFIER_NAME : '');
+  elem.classList.add(rootClass);
+  elem.classList.add(modifierClass);
+}
+`
 }

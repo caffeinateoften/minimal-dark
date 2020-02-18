@@ -1,6 +1,6 @@
 html, body {
   padding: 0;
-  font-size: 15px; /* all rem values based off of this */
+  font-size: 14px; /* all rem values based off of this */
 }
 
 @media only screen and (max-width: 700px) {

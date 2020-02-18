@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 customElements.define('c-btn--dropdown', class extends HTMLElement {
     constructor() {
@@ -11,7 +11,6 @@ customElements.define('c-btn--dropdown', class extends HTMLElement {
       });
     }
 });
-
 
 /* construct __element's before block__'s in case containing element does something like wrap its contents */
 customElements.define('c-link-item__title', class extends HTMLElement {
