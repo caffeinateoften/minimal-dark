@@ -111,14 +111,23 @@ let handlers = {
         }
       });
 
-      const unDimWhenClickedElements = document.getElementsByClassName(undimWhenElemsClickedClass);
-      for(let elem of unDimWhenClickedElements){
-        elem.addEventListener('click', () => {
+      // if this works, use instead of relying on class names
+      actionQueuer.applyWhenReady('c-link-item', (targetElem) => {
+        targetElem.addEventListener('click', () => {
           if(elem.classList.contains(dimClass)){
             elem.classList.remove(dimClass);
           }
+        });
       });
-    }
+
+      /*
+        const unDimWhenClickedElements = document.getElementsByClassName(undimWhenElemsClickedClass);
+        for(let elem of unDimWhenClickedElements){
+
+        }
+      */
+
+      // TODO:  a type connects multiple times. Need to make action queuer sorta "perma" attach/re-apply I guess.
   }
 };
 
@@ -161,16 +170,13 @@ function createDefaultConnectedCallback(){
   }
 }
 
+let hitCount = 0;
+let missCount = 0;
 let actionQueuer = {
-  connectedElementsHash: {},
+  connectedElements: {},
   hashQueue: {},
   applyWhenReady(elemName, func){     // apply function now, otherwise queue it up for later
-    let elem = this.connectedElements[elemName];
-    if(elem){
-      func(elem);
-    } else {
-      queueAction(elemName, func)
-    }
+    this.queueAction(elemName, func);
   },
   queueAction(elemName, func){         // queue function for particular elemName
     if(this.hashQueue[elemName]){
@@ -178,21 +184,34 @@ let actionQueuer = {
     } else {
       this.hashQueue[elemName] = [func];
     }
+    this.applyAllActionsToAllElementsOfType(elemName);
   },
   customElementTypeConnected(elem){    // store reference, dequeue all queued actions, and apply them to elem
     let name = elem.nodeName.toLowerCase();
+    if(this.connectedElements[name]){
+      this.connectedElements[name].push(elem);
+    } else {
+      this.connectedElements[name] = [elem];
+    }
     console.log('Custom Elem Type ' + name + ' has connected! ' + (this.hashQueue[name] ? this.hashQueue[name].length : '0') + ' actions to apply.');
-    if(!this.connectedElementsHash[name]){
-      this.connectedElementsHash[name] = elem;
-      this.applyActionsAndDequeue(name, elem);
+    this.applyAllActionsToSingleElementOfType(name, elem);
+  },
+  applyAllActionsToSingleElementOfType(elemName, elem){
+    if(this.hashQueue[elemName]){
+      console.log('Applying ' + this.hashQueue[elemName].length + ' functions for one recently connected element of type: ' + elemName);
+      for(let func of this.hashQueue[elemName]){
+        func(elem);
+      }
     }
   },
-  applyActionsAndDequeue(elemName, elem){ // for each function in the queue, call it with elem. afterwards, empty array of funcs.
-    if(this.hashQueue[elemName]){
-      for(let func of this.hashQueue[elemName]){
-        func[elem];
+  applyAllActionsToAllElementsOfType(elemName){ // for each function in the queue, call it with elem.
+    if(this.hashQueue[elemName] && this.connectedElements[elemName]){
+      console.log('Applying ' + this.hashQueue[elemName].length + ' functions for all ' + this.connectedElements[elemName].length + ' connected elements of type: ' + elemName);
+      for(let elem of this.connectedElements[elemName]){
+        for(let func of this.hashQueue[elemName]){
+          func(elem);
+        }
       }
-      this.hashQueue[elemName] = [];
     }
   }
 }
