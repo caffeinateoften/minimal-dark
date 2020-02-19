@@ -1,3 +1,5 @@
+# dont ever do this on production projects, im just messin
+
 # tool-chain
 ## Current Behavior:
 - Every block and element and --modifier level item defined in our modules.css stylesheet is expected to be registered as a custom element.
@@ -13,7 +15,6 @@
 - Intellisense for something that calls this.getAttribute(VALUE) where VALUE shows up if typing on that custom element in HTML.
 
 # Architecture Rules
-
 - A custom HTML Element's logic must only worry about manipulating it's own classes (and not the classes of another HTML element)
 - A custom HTML Element's state should be represented by a BEM --state-modifier CSS class
 - A custom HTML Element may attach EventListeners to anything, but again, the logic that executes may only manipulate classes of the HTML element that defined said EventListener

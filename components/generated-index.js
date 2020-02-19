@@ -133,7 +133,6 @@ let connectedCallbacks = {
       const undimWhenElemsClickedClass = this.getAttribute('undimWhenElemsClickedClass');
 
       const dimWhenOpenTargetElem = document.getElementById(dimWhenOpenId);
-      const unDimWhenClickedElements = document.getElementsByClassName(undimWhenElemsClickedClass);
 
       const targetElemObserver = new MutationObserver((mutations) => {
         for(let i = 0; i<mutations.length; i++){
@@ -152,7 +151,9 @@ let connectedCallbacks = {
           this.classList.remove(dimClass);
         }
       });
-
+      
+      console.log(undimWhenElemsClickedClass);
+      const unDimWhenClickedElements = document.getElementsByClassName(undimWhenElemsClickedClass);
       for(let i=0; i<unDimWhenClickedElements.length; i++){
         unDimWhenClickedElements[i].addEventListener('click', () => {
           if(this.classList.contains(dimClass)){
