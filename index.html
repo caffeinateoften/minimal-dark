@@ -10,7 +10,6 @@
   </head>
   <body class="theme-main">
     <div class="layout-header">
-      <div class="layout-fluid">
         <c-nav-overlay-card--absolute
             id="nav-card"
             isOpenClass="nav-overlay-card--is-open"
@@ -22,6 +21,7 @@
             <div class="layout-fluid layout-stretch">
               <c-row--stretch>
                 <c-col--vertically-center>
+                  <div class="layout-stretch-wide-hide-overflow">
                   <c-link-list>
                   <c-link-item>
                     <c-link-item__title>Hello, friend.</c-link-item__title>
@@ -47,11 +47,13 @@
                     <c-link-item__description>Lorem Ipsum...</c-link-item__description>
                   </c-link-item>
                 </c-link-list>
+              </div>
                 </c-col--vertically-center>
               </c-row--stretch>
             </div>
           </div>
         </c-nav-overlay-card--absolute>
+        <div class="layout-fluid">
         <c-row--space-between>
           <c-col>
             <c-brand>

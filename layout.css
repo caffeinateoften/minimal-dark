@@ -2,19 +2,34 @@
     Layouts specify widths and margins
     Modules expand to fill Layout
     States are !important
+
+    Things that go here would be layout/margin concerns that appear to match up in different parts of the app.
+    e.g. the alignment of the menu items in the overlay-card is vertically aligned with the main content text.
+
+    They're two different modules with different styles and have different parent elements but depend on the same spacing.
 */
 
+:root {
+  --fluid-margins-small: 5%;
+  --fluid-margins-medium: 10%;
+
+  --content-margins-small: 0%;
+  --content-margins-medium: 15%;
+}
+
 .layout-fluid {
-  margin-left: 10%;
-  margin-right: 10%;
+  position: relative;
+  margin-left: var(--fluid-margins-medium);
+  margin-right: var(--fluid-margins-medium);
   width: 80%;
   max-width: 1300px;
 }
 
 @media only screen and (max-width: 700px) {
   .layout-fluid {
-    margin-left: 5%;
-    margin-right: 5%;
+    position: relative;
+    margin-left: var(--fluid-margins-small);
+    margin-right: var(--fluid-margins-small);
     width: 90%;
     max-width: 1300px;
   }
@@ -30,23 +45,25 @@
 }
 
 .layout-content {
+  position: relative;
   height: 100%;
-  margin-left: 15%;
-  margin-right: 15%;
+  margin-left: var(--content-margins-medium);
+  margin-right: var(--content-margins-medium);
   max-width: 1100px;
 }
 
 @media only screen and (max-width: 600px) {
   .layout-content {
+    position: relative;
     height: 100%;
-    margin-left: 0%;
-    margin-right: 0%;
+    margin-left: var(--content-margins-small);
+    margin-right: var(--content-margins-small);
     max-width: 1100px;
   }
 }
 
 
-/* move these */
+/* make these CSS variables */
 .layout-color-farthest{
   background-color: #000000;
 }
@@ -62,4 +79,13 @@
 
 .layout-color-nearest {
   background-color: #363636;
+}
+
+/*
+  For unique case of hiding scrollbars
+  On the child of this element, use: box-sizing: content-box; with width: 100% and padding-right: 17px to have it leak outside of parent
+*/
+.layout-stretch-wide-hide-overflow{
+  width: 100%;
+  overflow: hidden;
 }
