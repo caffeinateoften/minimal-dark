@@ -1,10 +1,4 @@
-'use strict';
-
-/* DO NOT EDIT. THIS FILE WAS AUTOMATICALLY GENERATED. */
-
-var customElementNames = ['c-nav-primary','c-btn','c-btn--dropdown','c-nav-overlay-card','c-nav-overlay-card--absolute','c-nav-overlay-card--is-open','c-overlay--dim','c-btn--rect','c-brand','c-menu','c-menu--vertical','c-link-list','c-tldr-list','c-tldr-list__item','c-link-item','c-link-item__title','c-link-item__description','c-main-content','c-link','c-link--basic','c-link--see-more','c-post','c-post__title','c-post__content','c-post__footer','c-row','c-row--stretch','c-row--center','c-row--space-between','c-row--space-around','c-col','c-col--vertically-center'];
-
-  /* Only modifier handlers in the space-cowboy-coding.js file */
+/* Only modifier handlers in the space-cowboy-coding.js file */
 
 let handlers = {
 
@@ -236,4 +230,3 @@ function constructClassNames(elem){
 
 
 
-  

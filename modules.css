@@ -44,9 +44,7 @@
 .menu{}
 .menu--vertical{}
 
-.main-content{
-  display: block;
-}
+
 
 .link-list{
   display: block;
@@ -119,6 +117,10 @@ body::-webkit-scrollbar-thumb
   display: block;
   font-size: .8rem;
   margin-bottom: 2rem;
+}
+
+.main-content{
+  display: block;
 }
 
 .link{
