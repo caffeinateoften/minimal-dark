@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="favicon-coffee.svg" rel="icon"  type="image/x-icon" />
     <link href="index.css" type="text/css" rel="stylesheet">
+    <link href="prism.css" rel="stylesheet" />
     <title>CaffeinateOften</title>
   </head>
   <body class="theme-main">
@@ -96,6 +97,22 @@
             I can observe a targetNode for mutations (where <pre><code>mutation.type="attribute"</code></pre>) and then check for the particular CSS <pre><code>--is-state</code></pre> class I'm looking for.
             <br/>
             <br/>
+            Here is the snippet of code that I use to dim the opacity of the main content area of this page if the navigation menu has it's "open" class applied:
+            <br/>
+            <div class="code-snippet">
+            <pre><code class="language-javascript">const targetElemObserver = new MutationObserver((mutations) =&gt; {
+  for(let i = 0; i&lt;mutations.length; i++){
+    const mutation = mutations[i];
+    if(mutation.type === 'attributes' &amp;&amp; mutation.attributeName === 'class'){
+      if(dimWhenOpenTargetElem.classList.contains(openClassName) && !elem.classList.contains(dimClass)){
+        elem.classList.add(dimClass);
+      }
+    }
+  }
+});
+targetElemObserver.observe(dimWhenOpenTargetElem, { attributes: true });</code></pre>
+            </div>
+            <br/>
             <strong>TL;DR</strong>
             <ol class="tldr-list">
               <li class="tldr-list__item">Let's me observe changes to an HTMLElement's attributes (rather than listening for particular events).</li>
@@ -172,6 +189,7 @@
       <div class="layout-fluid">
       </div>
     </div>
+    <script src="prism.js"></script>
     <script src='./components/generated-index.js'></script>
   </body>
 </html>
