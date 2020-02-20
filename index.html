@@ -100,7 +100,7 @@
             Here is the snippet of code that I use to dim the opacity of the main content area of this page if the navigation menu has it's "open" class applied:
             <br/>
             <div class="code-snippet">
-            <pre><code class="language-javascript">const targetElemObserver = new MutationObserver((mutations) =&gt; {
+              <pre><code class="language-javascript">const targetElemObserver = new MutationObserver((mutations) =&gt; {
   for(let i = 0; i&lt;mutations.length; i++){
     const mutation = mutations[i];
     if(mutation.type === 'attributes' &amp;&amp; mutation.attributeName === 'class'){
@@ -111,7 +111,7 @@
   }
 });
 targetElemObserver.observe(dimWhenOpenTargetElem, { attributes: true });</code></pre>
-            </div>
+              </div>
             <br/>
             <strong>TL;DR</strong>
             <ol class="tldr-list">

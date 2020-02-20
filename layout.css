@@ -10,18 +10,18 @@
 */
 
 :root {
-  --fluid-margins-small: 5%;
-  --fluid-margins-medium: 10%;
+  --fluid-margins-small: 5vw;
+  --fluid-margins-medium: 10vw;
 
-  --content-margins-small: 0%;
-  --content-margins-medium: 15%;
+  --content-margins-small: 0vw;
+  --content-margins-medium: 15vw;
 }
 
 .layout-fluid {
   position: relative;
   margin-left: var(--fluid-margins-medium);
   margin-right: var(--fluid-margins-medium);
-  width: 80%;
+  width: 75%;
   max-width: 1300px;
 }
 

@@ -57,28 +57,7 @@
   padding-bottom: 100px;
 }
 
-body::-webkit-scrollbar-track
-{
-    position: absolute;
-    right: 0;
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-    border-radius: 10px;
-    background-color: #F5F5F5;
-}
 
-body::-webkit-scrollbar
-{
-    border-radius: 10px;
-    width: 8px;
-    background-color: #F5F5F5;
-}
-
-body::-webkit-scrollbar-thumb
-{
-    border-radius: 10px;
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-    background-color: #555;
-}
 
 .tldr-list{
   display: block;
@@ -158,9 +137,49 @@ body::-webkit-scrollbar-thumb
   display: block;
 }
 
+.code-snippet {
+  padding-top: 15px;
+  font-size: 10px + 1vw;
+  position: relative;
+  width: 80vw;
+  max-width: 1300px;
+  left: -15vw;
+}
+
+.code-snippet > pre {
+  display: block;
+}
 
 @media only screen and (max-width: 600px) {
   .code-snippet {
+    padding-top: 15px;
     font-size: 10px + 1vw;
+    position: relative;
+    width: 90vw;
+    max-width: 1300px;
+    left: -5vw;
   }
 }
+
+
+pre::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+    background-color: #F5F5F5;
+}
+
+pre::-webkit-scrollbar
+{
+    border-radius: 10px;
+    height: 8px;
+    background-color: #F5F5F5;
+}
+
+pre::-webkit-scrollbar-thumb
+{
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #555;
+}
+
