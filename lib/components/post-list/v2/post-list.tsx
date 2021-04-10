@@ -1,6 +1,4 @@
 import Link from 'next/link'
-import { Tooltip2 } from "@blueprintjs/popover2";
-import { Position } from '@blueprintjs/core';
 import { PostProps } from '../../post/v2/post';
 import { List } from '../../list/v1/list';
 
@@ -15,11 +13,9 @@ export function PostList(props: PostListProps) {
         <List
             data={props.posts}
             renderItem={(post: ArrayElement<PostListProps['posts']>) => (
-                <Tooltip2 onOpened={() => {}} className="post__feed-panel__tooltip" content={post.subtitle} position={Position.RIGHT}>
-
-                    <Link href={`posts/${post.id}`}>
-                        <div className="post__feed-panel">
-                            <style jsx>{`
+                <Link href={`posts/${post.id}`}>
+                    <div className="post__feed-panel">
+                        <style jsx>{`
                         .post__feed-panel {
                             cursor: pointer;
                             line-height: 46px;
@@ -36,11 +32,9 @@ export function PostList(props: PostListProps) {
                             width: 100%;
                         }
                     `}</style>
-                            {post.title}
-                        </div>
-                    </Link>
-                </Tooltip2>
-
+                        {post.title}
+                    </div>
+                </Link>
             )}
         />
     )
