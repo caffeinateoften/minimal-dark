@@ -5,7 +5,7 @@ export function getPosts(): PostProps[] {
         {
             id: '1',
             title: 'Welcome',
-            content: 'This is the personal site of the one and only caffeine king.'
+            content: 'This is the personal site of the one and only caffeine king. Posts will consist of random trash.'
         }
     ]
 }
