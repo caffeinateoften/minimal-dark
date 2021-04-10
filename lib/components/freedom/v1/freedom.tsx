@@ -1,4 +1,4 @@
-import { TextArea, Intent } from '@blueprintjs/core'
+import { TextArea, Intent, RadioGroup, Radio } from '@blueprintjs/core'
 
 export interface FreedomProps {
 
@@ -17,11 +17,15 @@ export function Freedom(props: FreedomProps) {
                     font-size: 12px;
                     width: 100%;
                 }
+
+                .freedom__from {
+                    margin-top: 24px;
+                }
+
             `}</style>
             <div className="freedom__scenario">
-
                 <h3>
-                    Describe the action you are assessing. "I would like to..."
+                    Describe the choice of action you are assessing. "I would like to..."
                 </h3>
                 <TextArea
                     className="freedom__scenario__textarea"
@@ -29,6 +33,36 @@ export function Freedom(props: FreedomProps) {
                     large={true}
                     intent={Intent.PRIMARY}
                 />
+            </div>
+            <div className="freedom__from">
+                <h3>
+                    Do you have the option to choose this action without punishment or pressure from some external entity?
+                </h3>
+                <div>
+                    <RadioGroup
+                        label="Freedom from External Entities"
+                        onChange={() => { }}
+                    // selectedValue={this.state.mealType}
+                    >
+                        <Radio label="yes" value="yes" />
+                        <Radio label="no" value="no" />
+                    </RadioGroup>
+                </div>
+            </div>
+            <div className="freedom__to">
+                <h3>
+                    Do you have the means (resources, skills, bandwidth) to act upon the option in front of you?
+                </h3>
+                <div>
+                    <RadioGroup
+                        label="Freedom to Act Upon an Available Option"
+                        onChange={() => { }}
+                        // selectedValue={this.state.mealType}
+                    >
+                        <Radio label="yes" value="yes" />
+                        <Radio label="no" value="no" />
+                    </RadioGroup>
+                </div>
             </div>
         </div>
     )
