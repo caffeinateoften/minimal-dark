@@ -5,7 +5,7 @@ export interface PageLayoutProps {
 
 const MARGIN_TOP = '120px'
 
-const MARGIN_SIDES_SMALL = '0px';
+const MARGIN_SIDES_SMALL = '5vw';
 const MARGIN_SIDES_MEDIUM = '15vw';
 
 export function PageLayout(props: PageLayoutProps) {

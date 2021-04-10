@@ -19,8 +19,8 @@ export const List: React.FC<ListProps> = (props) => {
                     }
                 `}</style>
             {
-                props.data.map(item => (
-                    <div className="list__item">
+                props.data.map((item) => (
+                    <div key={item.id} className="list__item">
                         {props.renderItem(item)}
                     </div>
                 ))
