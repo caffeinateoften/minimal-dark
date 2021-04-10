@@ -3,6 +3,18 @@ import { PostProps } from '../../../lib/components/post/v2/post'
 export function getPosts(): PostProps[] {
     return [
         {
+            id: '7',
+            title: 'What is Trust?',
+            subtitle: 'How to trust others and how to be trust worthy?',
+            content: 'Benevolence, Integrity, and Ability'
+        },
+        {
+            id: '6',
+            title: 'Specialization and Trade',
+            subtitle: 'Should we work together?',
+            content: 'TODO'
+        },
+        {
             id: '5',
             title: 'Minimizing Loss of Freedom for the Uncertain Future of a Technocrat',
             subtitle: 'Given uncertainty, how do I minimize loss of my freedom?',

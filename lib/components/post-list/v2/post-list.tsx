@@ -15,7 +15,7 @@ export function PostList(props: PostListProps) {
         <List
             data={props.posts}
             renderItem={(post: ArrayElement<PostListProps['posts']>) => (
-                <Tooltip2 className="post__feed-panel__tooltip" content={post.subtitle} position={Position.RIGHT}>
+                <Tooltip2 onOpened={() => {}} className="post__feed-panel__tooltip" content={post.subtitle} position={Position.RIGHT}>
 
                     <Link href={`posts/${post.id}`}>
                         <div className="post__feed-panel">
