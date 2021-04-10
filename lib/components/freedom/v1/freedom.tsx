@@ -16,6 +16,8 @@ export function Freedom(props: FreedomProps) {
     const [freedomFromValue, setFreedomFromValue] = useState<'yes' | 'no'>(null);
     const [freedomToValue, setFreedomToValue] = useState<'yes' | 'no'>(null)
 
+    const [scenarioDescription, setScenarioDescription] = useState('');
+
     const [isFree, setIsFree] = useState<boolean>(null)
     const [freedomMessage, setFreedomMessage] = useState(FreedomMessages.DEFAULT)
     const [messageIntent, setMessageIntent] = useState<Intent>(Intent.PRIMARY)
@@ -65,7 +67,15 @@ export function Freedom(props: FreedomProps) {
                     margin-top: 24px;
                 }
 
+                .freedom__scenario-description {
+                    margin-top: -10px;
+                    height: 30px;
+                }
+
             `}</style>
+            <div className="freedom__scenario-description">
+                <strong>to {scenarioDescription}</strong>?
+            </div>
             <div className="freedom__answer">
                 <Tag intent={messageIntent}>{freedomMessage}</Tag>
             </div>
@@ -75,6 +85,7 @@ export function Freedom(props: FreedomProps) {
                 </h3>
                 <TextArea
                     className="freedom__scenario__textarea"
+                    onChange={(e) => setScenarioDescription(e.target.value)}
                     growVertically={true}
                     large={true}
                     intent={Intent.PRIMARY}

@@ -74,7 +74,7 @@ export function getPosts(): PostProps[] {
         {
             id: '2',
             title: 'The Freedom Test',
-            subtitle: 'Are you free?',
+            subtitle: 'Do you have freedom',
             content: <div>
                 <Freedom />
             </div>
