@@ -1,10 +1,15 @@
+import { useState } from 'react'
 import { TextArea, Intent, RadioGroup, Radio } from '@blueprintjs/core'
+import { handleStringChange } from "@blueprintjs/docs-theme";
 
 export interface FreedomProps {
 
 }
 
 export function Freedom(props: FreedomProps) {
+    const [freedomFromValue, setFreedomFromValue] = useState<'yes' | 'no'>(null);
+    const [freedomToValue, setFreedomToValue] = useState<'yes' | 'no'>(null)
+
     return (
         <div>
             <style global jsx>{`
@@ -40,9 +45,9 @@ export function Freedom(props: FreedomProps) {
                 </h3>
                 <div>
                     <RadioGroup
-                        label="Freedom from External Entities"
-                        onChange={() => { }}
-                    // selectedValue={this.state.mealType}
+                        label="Freedom from an External Entity"
+                        onChange={handleStringChange((value: 'yes' | 'no') => setFreedomFromValue(value))}
+                        selectedValue={freedomFromValue}
                     >
                         <Radio label="yes" value="yes" />
                         <Radio label="no" value="no" />
@@ -56,8 +61,8 @@ export function Freedom(props: FreedomProps) {
                 <div>
                     <RadioGroup
                         label="Freedom to Act Upon an Available Option"
-                        onChange={() => { }}
-                        // selectedValue={this.state.mealType}
+                        onChange={handleStringChange((value: 'yes' | 'no') => setFreedomToValue(value))}
+                        selectedValue={freedomToValue}
                     >
                         <Radio label="yes" value="yes" />
                         <Radio label="no" value="no" />
