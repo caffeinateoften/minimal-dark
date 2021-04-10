@@ -132,10 +132,6 @@ export function getPosts(): PostProps[] {
                         (vi) Break any of these rules sooner than say anything outright barbarous.
                 </li>
                 </ul>
-                <br />
-                <div>
-                    I do not write well. I need to review basics of grammar. I am not a dilligent writer, but if I try to be one, I will see what the outcome of the above approach is.
-                </div>
             </div>
         },
         {
