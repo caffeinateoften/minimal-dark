@@ -130,7 +130,7 @@ export function getPosts(): PostProps[] {
                 </ul>
                 <br />
                 <div>
-                    I am no dilligent writer, but if I tried to be one, I might see what the outcome of the above process is.
+                    I do not write well. I need to review basics of grammar. I am not a dilligent writer, but if I try to be one, I will see what the outcome of the above approach is.
                 </div>
             </div>
         },

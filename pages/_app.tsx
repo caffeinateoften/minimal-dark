@@ -3,10 +3,9 @@ import "@blueprintjs/core/lib/css/blueprint.css";
 import "@blueprintjs/icons/lib/css/blueprint-icons.css";
 
 import type { AppProps } from 'next/app'
-import Link from 'next/link'
 
 import { NavBar, NavBarProps } from '../lib/components/nav-bar/v1/nav-bar'
-import { PageLayout } from '../lib/components/page-layout/v1/page-layout'
+import { PageLayout } from '../lib/components/page-layout/v2/page-layout'
 import { Logo } from '../lib/components/logo/v1/logo'
 
 const navBarData: NavBarProps = {
