@@ -3,9 +3,15 @@ import { PostProps } from '../../../lib/components/post/v2/post'
 export function getPosts(): PostProps[] {
     return [
         {
-            id: '4',
+            id: '5',
             title: 'Minimizing Loss of Freedom for the Uncertain Future of a Technocrat',
             subtitle: 'Given uncertainty, how do I minimize loss of my freedom?',
+            content: 'TODO'
+        },
+        {
+            id: '4',
+            title: 'What is a Technocrat?',
+            subtitle: 'Am I this?',
             content: 'TODO'
         },
         {
@@ -13,7 +19,7 @@ export function getPosts(): PostProps[] {
             title: 'Minimax: How to minimize regret',
             subtitle: 'Given uncertainty, how do I minimize loss?',
             content: 'TODO'
-            
+
         },
         {
             id: '2',
