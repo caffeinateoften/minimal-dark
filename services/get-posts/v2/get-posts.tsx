@@ -3,10 +3,17 @@ import { PostProps } from '../../../lib/components/post/v2/post'
 export function getPosts(): PostProps[] {
     return [
         {
-            id: '3',
-            title: 'Maximizing Freedom for the Uncertain Technocrat',
-            subtitle: 'Enable current self to remain uncommitted while optimizing for first instance of future self that would like to commit',
+            id: '4',
+            title: 'Minimizing Loss of Freedom for the Uncertain Future of a Technocrat',
+            subtitle: 'Given uncertainty, how do I minimize loss of my freedom?',
             content: 'TODO'
+        },
+        {
+            id: '3',
+            title: 'Minimax: How to minimize regret',
+            subtitle: 'Given uncertainty, how do I minimize loss?',
+            content: 'TODO'
+            
         },
         {
             id: '2',
@@ -17,7 +24,7 @@ export function getPosts(): PostProps[] {
         {
             id: '1',
             title: 'Welcome',
-            subtitle: '',
+            subtitle: 'Hello, Friend.',
             content: 'This is the personal site of the one and only caffeine king. Posts will consist of random trash.'
         }
     ]

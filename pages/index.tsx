@@ -1,6 +1,6 @@
 import { Heading } from '../lib/components/heading/v1/heading'
-import { PostList } from '../lib/components/post-list/v1/post-list'
-import { getPosts } from '../services/get-posts/v1/get-posts'
+import { PostList } from '../lib/components/post-list/v2/post-list'
+import { getPosts } from '../services/get-posts/v2/get-posts'
 
 import { List } from '../lib/components/list/v1/list'
 
