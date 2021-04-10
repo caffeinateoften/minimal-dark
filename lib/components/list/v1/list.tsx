@@ -12,6 +12,7 @@ export const List: React.FC<ListProps> = (props) => {
                         flex-wrap: wrap;
                         position: relative;
                         width: 100%;
+                        margin-bottom: 30px;
                     }
 
                     .list__item {

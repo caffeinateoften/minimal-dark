@@ -3,6 +3,18 @@ import { PostProps } from '../../../lib/components/post/v2/post'
 export function getPosts(): PostProps[] {
     return [
         {
+            id: '12',
+            title: 'Ability: The Key Ingredient to motivation, satisfaction, trust, and freedom',
+            subtitle: '',
+            content: 'TODO'
+        },
+        {
+            id: '12',
+            title: 'Motivation: Autonomy, Purpose, and Ability',
+            subtitle: '',
+            content: 'TODO',
+        },
+        {
             id: '11',
             title: 'Which is worse: The existence of a Taker or the Absence of a Giver?',
             subtitle: 'Minimax\'ing Givers and Takers',
