@@ -5,8 +5,9 @@ export interface PageLayoutProps {
 
 const MARGIN_TOP = '120px'
 
-const MARGIN_SIDES_SMALL = '5vw';
-const MARGIN_SIDES_MEDIUM = '15vw';
+const MARGIN_SIDES_EXTRA_SMALL = '5vw';
+const MARGIN_SIDES_SMALL = '10vw';
+const MARGIN_SIDES_MEDIUM = '25vw';
 
 export function PageLayout(props: PageLayoutProps) {
     return (
@@ -27,11 +28,18 @@ export function PageLayout(props: PageLayoutProps) {
                         position: relative;
                         max-width: 1100px;
                         margin-top: ${MARGIN_TOP};
-                        margin-left: ${MARGIN_SIDES_SMALL};
-                        margin-right: ${MARGIN_SIDES_SMALL};
+                        margin-left: ${MARGIN_SIDES_EXTRA_SMALL};
+                        margin-right: ${MARGIN_SIDES_EXTRA_SMALL};
                     }
                     
                     @media only screen and (min-width: 600px) {
+                        .page-content-container {
+                            margin-left: ${MARGIN_SIDES_SMALL};
+                            margin-right: ${MARGIN_SIDES_SMALL};
+                        }
+                    }
+
+                    @media only screen and (min-width: 1000px) {
                         .page-content-container {
                             margin-left: ${MARGIN_SIDES_MEDIUM};
                             margin-right: ${MARGIN_SIDES_MEDIUM};

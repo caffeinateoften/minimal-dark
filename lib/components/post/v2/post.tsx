@@ -1,10 +1,12 @@
-import { Breadcrumb, Text } from '@blueprintjs/core'
+import { Breadcrumb } from '@blueprintjs/core'
 import { Heading } from '../../heading/v1/heading'
+import { Subtitle } from '../../subtitle/v1/subtitle'
 
 export interface PostProps {
     id: string
     title: string
-    content: string
+    subtitle: string
+    content: React.ReactNode
 }
 
 export function Post(props: PostProps) {
@@ -19,9 +21,12 @@ export function Post(props: PostProps) {
             <Heading>
                 {props.title}
             </Heading>
-            <Text>
+            <Subtitle>
+                {props.subtitle}
+            </Subtitle>
+            <div>
                 {props.content}
-            </Text>
+            </div>
         </div>
     )
 }
