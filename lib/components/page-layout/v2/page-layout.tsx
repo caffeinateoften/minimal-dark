@@ -9,6 +9,10 @@ const MARGIN_SIDES_EXTRA_SMALL = '5vw';
 const MARGIN_SIDES_SMALL = '10vw';
 const MARGIN_SIDES_MEDIUM = '25vw';
 
+const FONT_SIZE_EXTRA_SMALL = '.7rem';
+const FONT_SIZE_SMALL = '.8rem';
+const FONT_SIZE_MEDIUM = '.9rem';
+
 export function PageLayout(props: PageLayoutProps) {
     return (
         <div className='page'>
@@ -36,12 +40,14 @@ export function PageLayout(props: PageLayoutProps) {
                         margin-top: ${MARGIN_TOP};
                         margin-left: ${MARGIN_SIDES_EXTRA_SMALL};
                         margin-right: ${MARGIN_SIDES_EXTRA_SMALL};
+                        font-size: ${FONT_SIZE_EXTRA_SMALL};
                 }
                     
                 @media only screen and (min-width: 600px) {
                     .page-content-container {
                         margin-left: ${MARGIN_SIDES_SMALL};
                         margin-right: ${MARGIN_SIDES_SMALL};
+                        font-size: ${FONT_SIZE_SMALL};
                     }
                 }
 
@@ -49,6 +55,7 @@ export function PageLayout(props: PageLayoutProps) {
                     .page-content-container {
                         margin-left: ${MARGIN_SIDES_MEDIUM};
                         margin-right: ${MARGIN_SIDES_MEDIUM};
+                        font-size: ${FONT_SIZE_MEDIUM};
                     }
                 }
 
