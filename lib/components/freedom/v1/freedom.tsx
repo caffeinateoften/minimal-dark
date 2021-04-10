@@ -1,14 +1,53 @@
-import { useState } from 'react'
-import { TextArea, Intent, RadioGroup, Radio } from '@blueprintjs/core'
+import { useState, useEffect } from 'react'
+import { TextArea, Intent, RadioGroup, Radio, Tag } from '@blueprintjs/core'
 import { handleStringChange } from "@blueprintjs/docs-theme";
 
 export interface FreedomProps {
 
 }
 
+const FreedomMessages = {
+    DEFAULT: 'Please enter input to see whether or not you have freedom...',
+    IS_FREE: 'Yes.',
+    IS_NOT_FREE: 'No.'
+}
+
 export function Freedom(props: FreedomProps) {
     const [freedomFromValue, setFreedomFromValue] = useState<'yes' | 'no'>(null);
     const [freedomToValue, setFreedomToValue] = useState<'yes' | 'no'>(null)
+
+    const [isFree, setIsFree] = useState<boolean>(null)
+    const [freedomMessage, setFreedomMessage] = useState(FreedomMessages.DEFAULT)
+
+    const handleFreedomValidation = () => {
+        if (typeof freedomFromValue === 'string' && typeof freedomToValue === 'string') {
+            console.log('booleans!')
+            console.log('freedomFromValue:', freedomFromValue)
+            console.log('freedomToValue:', freedomToValue)
+            if (freedomFromValue === 'yes' && freedomToValue === 'yes') {
+                setIsFree(true)
+            }
+            else {
+                setIsFree(false)
+            }
+        }
+    }
+
+    useEffect(() => {
+        if (typeof isFree === 'boolean') {
+            console.log('isFree:', isFree)
+            if (isFree) {
+                setFreedomMessage(FreedomMessages.IS_FREE)
+            }
+            else {
+                setFreedomMessage(FreedomMessages.IS_NOT_FREE)
+            }
+        }
+    }, [isFree])
+
+    useEffect(() => {
+        handleFreedomValidation();
+    }, [freedomFromValue, freedomToValue])
 
     return (
         <div>
@@ -28,6 +67,9 @@ export function Freedom(props: FreedomProps) {
                 }
 
             `}</style>
+            <div className="freedom__answer">
+                <Tag color="">{freedomMessage}</Tag>
+            </div>
             <div className="freedom__scenario">
                 <h3>
                     Describe the choice of action you are assessing. "I would like to..."
@@ -46,7 +88,9 @@ export function Freedom(props: FreedomProps) {
                 <div>
                     <RadioGroup
                         label="Freedom from an External Entity"
-                        onChange={handleStringChange((value: 'yes' | 'no') => setFreedomFromValue(value))}
+                        onChange={handleStringChange((value: 'yes' | 'no') => {
+                            setFreedomFromValue(value)
+                        })}
                         selectedValue={freedomFromValue}
                     >
                         <Radio label="yes" value="yes" />
@@ -61,7 +105,9 @@ export function Freedom(props: FreedomProps) {
                 <div>
                     <RadioGroup
                         label="Freedom to Act Upon an Available Option"
-                        onChange={handleStringChange((value: 'yes' | 'no') => setFreedomToValue(value))}
+                        onChange={handleStringChange((value: 'yes' | 'no') => {
+                            setFreedomToValue(value)
+                        })}
                         selectedValue={freedomToValue}
                     >
                         <Radio label="yes" value="yes" />
