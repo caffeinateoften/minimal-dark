@@ -6,18 +6,17 @@ export interface PageLayoutProps {
 const MARGIN_TOP = '120px'
 
 const MARGIN_SIDES_EXTRA_SMALL = '5vw';
-const MARGIN_SIDES_SMALL = '10vw';
-const MARGIN_SIDES_MEDIUM = '25vw';
+const MARGIN_SIDES_SMALL = 'calc((100vw - 800px)/2)';
+const MARGIN_SIDES_MEDIUM = 'calc((100vw - 900px)/2)';
 
-const FONT_SIZE_EXTRA_SMALL = '.7rem';
-const FONT_SIZE_SMALL = '.8rem';
-const FONT_SIZE_MEDIUM = '.9rem';
+const FONT_SIZE_EXTRA_SMALL = '9px';
+const FONT_SIZE_SMALL = '12px';
+const FONT_SIZE_MEDIUM = '12px';
 
 export function PageLayout(props: PageLayoutProps) {
     return (
         <div className='page'>
             <style global jsx>{`
-
 
                 html, body, #__next {
                     height: 100%;
@@ -34,7 +33,6 @@ export function PageLayout(props: PageLayoutProps) {
                 }
 
                 .page-content-container {
-                        display: flex;
                         position: relative;
                         max-width: 1100px;
                         margin-top: ${MARGIN_TOP};
@@ -43,7 +41,7 @@ export function PageLayout(props: PageLayoutProps) {
                         font-size: ${FONT_SIZE_EXTRA_SMALL};
                 }
                     
-                @media only screen and (min-width: 600px) {
+                @media only screen and (min-width: 1000px) {
                     .page-content-container {
                         margin-left: ${MARGIN_SIDES_SMALL};
                         margin-right: ${MARGIN_SIDES_SMALL};
@@ -51,7 +49,7 @@ export function PageLayout(props: PageLayoutProps) {
                     }
                 }
 
-                @media only screen and (min-width: 1000px) {
+                @media only screen and (min-width: 1300px) {
                     .page-content-container {
                         margin-left: ${MARGIN_SIDES_MEDIUM};
                         margin-right: ${MARGIN_SIDES_MEDIUM};
