@@ -1,24 +1,34 @@
-# dont ever do this on production projects, im just messin
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-# tool-chain
-## Current Behavior:
-- Every block and element and --modifier level item defined in our modules.css stylesheet is expected to be registered as a custom element.
-(Note: Something with block--modifier automatically is given class="block block-modifier", and same goes for element level items)
-- At runtime (todo: move to build-time) an error is logged if no connectedCallback() function was provided for the block or element
+## Getting Started
 
-## Goals:
-- CSS Should drive the existance of our Modules/Components. The tool-chain can get smarter and stricter for SMACSS + BEM convention.
+First, run the development server:
 
-## Stretch Goals:
-- I shouldn't require custom element registration for unused CSS.
-- I should be able to detect at build time if I have a node/tag name that doesn't match a registered custom element.
-- Intellisense for something that calls this.getAttribute(VALUE) where VALUE shows up if typing on that custom element in HTML.
+```bash
+npm run dev
+# or
+yarn dev
+```
 
-# Architecture Rules
-- A custom HTML Element's logic must only worry about manipulating it's own classes (and not the classes of another HTML element)
-- A custom HTML Element's state should be represented by a BEM --state-modifier CSS class
-- A custom HTML Element may attach EventListeners to anything, but again, the logic that executes may only manipulate classes of the HTML element that defined said EventListener
-- A custom HTML Element that depends on the state of another custom HTML Element should observe changes to the classes on that other element (and not wire up an EventListener just to repeat the action that imperatively caused that other element to get into that state) (e.g. Observe attribute changes with MutationObserver). This loosens the coupling between the two HTML elements, in case another mechanism can cause target element to move into the target state.
-- JS Logic that depends on an ID of another custom HTML element should be very obvious in the .html file.
-- JS Logic that depends on a CSS class value should be very obvious in the .html file.
-(RE: The last two points --> a custom HTML element changes it's class or it's IDs, that blast radius is at least scoped to the HTML files and isolated from the JS files)
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+
+[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+
+The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+
+## Learn More
+
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
