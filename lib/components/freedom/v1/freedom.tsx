@@ -18,14 +18,17 @@ export function Freedom(props: FreedomProps) {
 
     const [isFree, setIsFree] = useState<boolean>(null)
     const [freedomMessage, setFreedomMessage] = useState(FreedomMessages.DEFAULT)
+    const [messageIntent, setMessageIntent] = useState<Intent>(Intent.PRIMARY)
 
     const handleFreedomValidation = () => {
         if (typeof freedomFromValue === 'string' && typeof freedomToValue === 'string') {
             if (freedomFromValue === 'yes' && freedomToValue === 'yes') {
                 setIsFree(true)
+                setMessageIntent(Intent.SUCCESS)
             }
             else {
                 setIsFree(false)
+                setMessageIntent(Intent.DANGER)
             }
         }
     }
@@ -64,7 +67,7 @@ export function Freedom(props: FreedomProps) {
 
             `}</style>
             <div className="freedom__answer">
-                <Tag color="">{freedomMessage}</Tag>
+                <Tag intent={messageIntent}>{freedomMessage}</Tag>
             </div>
             <div className="freedom__scenario">
                 <h3>
