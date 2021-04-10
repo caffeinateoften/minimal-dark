@@ -3,6 +3,30 @@ import { PostProps } from '../../../lib/components/post/v2/post'
 export function getPosts(): PostProps[] {
     return [
         {
+            id: '11',
+            title: 'Which is worse: The existence of a Taker or the Absence of a Giver?',
+            subtitle: 'Minimax\'ing Givers and Takers',
+            content: 'TODO'
+        },
+        {
+            id: '10',
+            title: 'Persona Types: Giver, Matcher, Taker',
+            subtitle: 'When do people exchange value?',
+            content: 'TODO'
+        },
+        {
+            id: '9',
+            title: 'What is a "Gift" culture?',
+            subtitle: 'When does focus shift towards generating and exchanging reputation instead of explicit money?',
+            content: 'TODO'
+        },
+        {
+            id: '8',
+            title: 'What is value?',
+            subtitle: 'Money? Reputation? Freedom? All of the above?',
+            content: 'TODO',
+        },
+        {
             id: '7',
             title: 'What is Trust?',
             subtitle: 'How to trust others and how to be trust worthy?',
