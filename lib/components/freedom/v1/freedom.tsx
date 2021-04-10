@@ -21,9 +21,6 @@ export function Freedom(props: FreedomProps) {
 
     const handleFreedomValidation = () => {
         if (typeof freedomFromValue === 'string' && typeof freedomToValue === 'string') {
-            console.log('booleans!')
-            console.log('freedomFromValue:', freedomFromValue)
-            console.log('freedomToValue:', freedomToValue)
             if (freedomFromValue === 'yes' && freedomToValue === 'yes') {
                 setIsFree(true)
             }
@@ -35,7 +32,6 @@ export function Freedom(props: FreedomProps) {
 
     useEffect(() => {
         if (typeof isFree === 'boolean') {
-            console.log('isFree:', isFree)
             if (isFree) {
                 setFreedomMessage(FreedomMessages.IS_FREE)
             }
