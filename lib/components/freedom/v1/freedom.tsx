@@ -103,6 +103,7 @@ export function Freedom(props: FreedomProps) {
                 </h3>
                 <div>
                     <RadioGroup
+                        disabled={freedomFromValue === 'no'}
                         label="Freedom to Act Upon an Available Option"
                         onChange={handleStringChange((value: 'yes' | 'no') => {
                             setFreedomToValue(value)
