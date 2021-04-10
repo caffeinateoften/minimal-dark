@@ -1,9 +1,11 @@
 import { PostProps } from '../../../lib/components/post/v2/post'
 
+import { Freedom } from '../../../lib/components/freedom/v1/freedom'
+
 export function getPosts(): PostProps[] {
     return [
         {
-            id: '12',
+            id: '13',
             title: 'Ability: The Key Ingredient to motivation, satisfaction, trust, and freedom',
             subtitle: '',
             content: 'TODO'
@@ -73,7 +75,9 @@ export function getPosts(): PostProps[] {
             id: '2',
             title: 'The Freedom Test',
             subtitle: 'Am I free?',
-            content: 'TODO'
+            content: <div>
+                <Freedom />
+            </div>
         },
         {
             id: '0',
