@@ -93,11 +93,11 @@ export function Freedom(props: FreedomProps) {
             </div>
             <div className="freedom__from">
                 <h3>
-                    Do you have the option to choose this action without punishment or pressure from some external entity?
+                    Can you choose this option without being blocked by some external entity?
                 </h3>
                 <div>
                     <RadioGroup
-                        label="Freedom from an External Entity"
+                        label="Freedom from an External Entity, to have an available option"
                         onChange={handleStringChange((value: 'yes' | 'no') => {
                             setFreedomFromValue(value)
                         })}
@@ -110,7 +110,7 @@ export function Freedom(props: FreedomProps) {
             </div>
             <div className="freedom__to">
                 <h3>
-                    Do you have the means (resources, skills, bandwidth) to act upon the option in front of you?
+                    Can you take action on this option based on your means (resources, skills, bandwidth)?
                 </h3>
                 <div>
                     <RadioGroup
