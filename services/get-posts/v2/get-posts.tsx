@@ -90,7 +90,7 @@ export function getPosts(): PostProps[] {
         },
         {
             id: '1',
-            title: 'How does a dilligent writer write a sentence?',
+            title: 'How does a diligent writer write a sentence?',
             subtitle: '"...if thought corrupts language, language can also corrupt thought." - George Orwell',
             content: <div>
                 <h4>
@@ -141,6 +141,14 @@ export function getPosts(): PostProps[] {
                         (vi) Break any of these rules sooner than say anything outright barbarous.
                 </li>
                 </ul>
+                <div>
+                    <h3>Sources</h3>
+                    <ul>
+                        <li>
+                            Orwell, George. Politics and the English Language. Renard Press, 2021. 
+                        </li>
+                    </ul>
+                </div>
             </div>
         },
         {
