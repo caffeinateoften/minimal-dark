@@ -172,10 +172,10 @@ export function Freedom(props: FreedomProps) {
                         What <i>is</i> significant interference from an external entity? 
                     </li>
                     <li>
-                        What amount of effort (value loss) <i>is</i> within reason for you to gain the required means to act?
+                        What amount of effort (value loss) <i>is</i> within reason for you to gain the required means to act on a given opportunity?
                     </li>
                     <li>
-                        <i>Is</i> having "freedom" always the optimal state for a given scenario, and if not, when is it not?
+                        <i>Is</i> having "freedom" always the "goal" state for a given scenario, and if not, when is it not?
                     </li>
                 </ul>
             </div>
