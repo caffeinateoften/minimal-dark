@@ -29,7 +29,7 @@ export function Freedom(props: FreedomProps) {
                 if (freedomToValue === 'yes') {
                     setIsFree(true)
                 }
-                else if(withinReasonValue === 'yes'){
+                else if (withinReasonValue === 'yes') {
                     setIsFree(true)
                 }
                 else {
@@ -158,8 +158,8 @@ export function Freedom(props: FreedomProps) {
                     </RadioGroup>
                 </div>
             </div>
-            <div className="freedom__the-question">
-                The question I am curious about is: what is within reason?
+            <div style={{ display: freedomToValue === 'no' ? 'block' : 'none' }} className="freedom__the-question">
+                Though, I am curious. What <i>is</i> within reason?
             </div>
         </div>
     )
