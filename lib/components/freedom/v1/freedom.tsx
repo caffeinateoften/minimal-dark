@@ -82,11 +82,15 @@ export function Freedom(props: FreedomProps) {
                 }
 
                 .freedom__the-question {
-                    margin-top: 30px;
+                    margin-top: 48px;
                 }
 
                 .freedom__the-question div {
                     padding-top: 12px;
+                }
+
+                .freedom__resources {
+                    margin-top: 48px;
                 }
 
             `}</style>
@@ -163,7 +167,30 @@ export function Freedom(props: FreedomProps) {
             </div>
             <div className="freedom__the-question">
                 I am curious:
-                <div>What <i>is</i> significant interference from an external entity? What <i>is</i> within reason for you to gain the required means to act?</div>
+                <ul>
+                    <li>
+                        What <i>is</i> significant interference from an external entity? 
+                    </li>
+                    <li>
+                        What <i>is</i> within reason for you to gain the required means to act?
+                    </li>
+                    <li>
+                        <i>Is</i> having "freedom" always the optimal state for a given scenario, and if not, when is it not?
+                    </li>
+                </ul>
+            </div>
+            <div className="freedom__resources">
+                <h2>Interesting resources</h2>
+                <ul>
+                    <li><a target="_blank" rel="noopener noreferrer" href="https://open.spotify.com/episode/3I7GkvKoRzJklbf5KwNPyF?si=PdZSq6_pRbeCMy-SSF3iIA">
+                        Episode #140 Isaiah Berlin pt. 1 - Pluralism
+                    </a></li>
+                    <li>
+                        <a target="_blank" rel="noopener noreferrer" href="https://plato.stanford.edu/entries/liberty-positive-negative/">
+                            Standford Encyclopedia of Philosophy: Positive and Negative Liberty 
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
     )
