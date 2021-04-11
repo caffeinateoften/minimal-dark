@@ -114,7 +114,7 @@ export function Freedom(props: FreedomProps) {
             </div>
             <div className="freedom__from">
                 <h3>
-                    Do you <span style={{ fontWeight: 900 }}>have the opportunity to choose</span> this without intererfance from an external entity?
+                    Do you <span style={{ fontWeight: 900 }}>have the opportunity to choose</span> this without interference from an external entity?
                 </h3>
                 <div>
                     <RadioGroup
