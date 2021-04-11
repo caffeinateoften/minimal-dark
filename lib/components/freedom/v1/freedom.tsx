@@ -15,6 +15,7 @@ const FreedomMessages = {
 export function Freedom(props: FreedomProps) {
     const [freedomFromValue, setFreedomFromValue] = useState<'yes' | 'no'>(null);
     const [freedomToValue, setFreedomToValue] = useState<'yes' | 'no'>(null)
+    const [withinReasonValue, setWithinReasonValue] = useState<'yes' | 'no'>(null)
 
     const [scenarioDescription, setScenarioDescription] = useState('');
 
@@ -24,13 +25,19 @@ export function Freedom(props: FreedomProps) {
 
     const handleFreedomValidation = () => {
         if (typeof freedomFromValue === 'string' && typeof freedomToValue === 'string') {
-            if (freedomFromValue === 'yes' && freedomToValue === 'yes') {
-                setIsFree(true)
-                setMessageIntent(Intent.SUCCESS)
+            if (freedomFromValue === 'yes') {
+                if (freedomToValue === 'yes') {
+                    setIsFree(true)
+                }
+                else if(withinReasonValue === 'yes'){
+                    setIsFree(true)
+                }
+                else {
+                    setIsFree(false)
+                }
             }
             else {
                 setIsFree(false)
-                setMessageIntent(Intent.DANGER)
             }
         }
     }
@@ -39,16 +46,18 @@ export function Freedom(props: FreedomProps) {
         if (typeof isFree === 'boolean') {
             if (isFree) {
                 setFreedomMessage(FreedomMessages.IS_FREE)
+                setMessageIntent(Intent.SUCCESS)
             }
             else {
                 setFreedomMessage(FreedomMessages.IS_NOT_FREE)
+                setMessageIntent(Intent.DANGER)
             }
         }
     }, [isFree])
 
     useEffect(() => {
         handleFreedomValidation();
-    }, [freedomFromValue, freedomToValue])
+    }, [freedomFromValue, freedomToValue, withinReasonValue])
 
     return (
         <div>
@@ -70,6 +79,11 @@ export function Freedom(props: FreedomProps) {
                 .freedom__scenario-description {
                     margin-top: -10px;
                     height: 30px;
+                }
+
+                .freedom__the-question {
+                    margin-top: 30px;
+                    font-weight: 700;
                 }
 
             `}</style>
@@ -125,6 +139,27 @@ export function Freedom(props: FreedomProps) {
                         <Radio label="no" value="no" />
                     </RadioGroup>
                 </div>
+            </div>
+            <div className="freedom__within-reason-to-gain-freedom-to">
+                <h3>
+                    If you are given the opportunity, but do not currently have the ability to act on the opportunity, is it <span style={{ fontWeight: 900 }}>within reason</span> for you to gain the required means (resources, skills, bandwidth) to have the freedom to act on the opportunity?
+                </h3>
+                <div>
+                    <RadioGroup
+                        disabled={freedomToValue === 'yes' || freedomFromValue === 'no'}
+                        label="Freedom to reasonably gain the means to act, given an opportunity"
+                        onChange={handleStringChange((value: 'yes' | 'no') => {
+                            setWithinReasonValue(value)
+                        })}
+                        selectedValue={withinReasonValue}
+                    >
+                        <Radio label="yes" value="yes" />
+                        <Radio label="no" value="no" />
+                    </RadioGroup>
+                </div>
+            </div>
+            <div className="freedom__the-question">
+                The question I am curious about is: what is within reason?
             </div>
         </div>
     )
