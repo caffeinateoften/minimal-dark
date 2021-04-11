@@ -83,7 +83,10 @@ export function Freedom(props: FreedomProps) {
 
                 .freedom__the-question {
                     margin-top: 30px;
-                    font-weight: 700;
+                }
+
+                .freedom__the-question div {
+                    padding-top: 12px;
                 }
 
             `}</style>
@@ -107,7 +110,7 @@ export function Freedom(props: FreedomProps) {
             </div>
             <div className="freedom__from">
                 <h3>
-                    Do you <span style={{ fontWeight: 900 }}>have the opportunity to choose</span> this without interference from an external entity?
+                    Do you <span style={{ fontWeight: 900 }}>have the opportunity to choose</span> this without intererfance from an external entity?
                 </h3>
                 <div>
                     <RadioGroup
@@ -158,8 +161,9 @@ export function Freedom(props: FreedomProps) {
                     </RadioGroup>
                 </div>
             </div>
-            <div style={{ display: freedomToValue === 'no' ? 'block' : 'none' }} className="freedom__the-question">
-                Though, I am curious. What <i>is</i> within reason?
+            <div className="freedom__the-question">
+                I am curious:
+                <div>What <i>is</i> significant interference from an external entity? What <i>is</i> within reason for you to gain the required means to act?</div>
             </div>
         </div>
     )
