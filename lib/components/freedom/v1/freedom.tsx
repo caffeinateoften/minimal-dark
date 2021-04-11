@@ -7,7 +7,7 @@ export interface FreedomProps {
 }
 
 const FreedomMessages = {
-    DEFAULT: 'Please enter input to see whether or not you have freedom...',
+    DEFAULT: 'Please enter input to see whether or not you have the freedom to do something...',
     IS_FREE: 'Yes.',
     IS_NOT_FREE: 'No.'
 }
@@ -93,11 +93,11 @@ export function Freedom(props: FreedomProps) {
             </div>
             <div className="freedom__from">
                 <h3>
-                    Can you choose this option without being blocked by some external entity?
+                    Do you <span style={{ fontWeight: 900 }}>have the opportunity to choose</span> this without interference from an external entity?
                 </h3>
                 <div>
                     <RadioGroup
-                        label="Freedom from an External Entity, to have an available option"
+                        label="Freedom from an external entity"
                         onChange={handleStringChange((value: 'yes' | 'no') => {
                             setFreedomFromValue(value)
                         })}
@@ -110,12 +110,12 @@ export function Freedom(props: FreedomProps) {
             </div>
             <div className="freedom__to">
                 <h3>
-                    Can you take action on this option based on your means (resources, skills, bandwidth)?
+                    Given an opportunity that you are free to choose, do you have the <span style={{ fontWeight: 900 }}>ability to act</span> on this opportunity? (Do you have the means: resources, skills, bandwidth?)
                 </h3>
                 <div>
                     <RadioGroup
                         disabled={freedomFromValue === 'no'}
-                        label="Freedom to Act Upon an Available Option"
+                        label="Freedom to act, given an opportunity"
                         onChange={handleStringChange((value: 'yes' | 'no') => {
                             setFreedomToValue(value)
                         })}
