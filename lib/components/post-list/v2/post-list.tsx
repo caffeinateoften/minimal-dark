@@ -35,11 +35,11 @@ export function PostList(props: PostListProps) {
                             }
                             .post__feed-panel__tag {
                                 float: right;
-                                padding-right: 36px;
+                                padding-right: 1vw;
                             }
                     `}</style>
                         {post.title}
-                        <span className="post__feed-panel__tag">{post.placeholder ? <Tag>placeholder</Tag> : ''}</span>
+                        <span className="post__feed-panel__tag">{post.placeholder ? <Tag minimal>placeholder</Tag> : ''}</span>
                     </div>
                 </Link>
             )}

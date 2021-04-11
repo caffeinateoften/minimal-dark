@@ -6,8 +6,8 @@ export interface PageLayoutProps {
 const MARGIN_TOP = '120px'
 
 const MARGIN_SIDES_EXTRA_SMALL = '5vw';
-const MARGIN_SIDES_SMALL = 'calc((100vw - 800px)/2)';
-const MARGIN_SIDES_MEDIUM = 'calc((100vw - 900px)/2)';
+const MARGIN_SIDES_SMALL = 'calc((100vw - 700px)/2)';
+const MARGIN_SIDES_MEDIUM = 'calc((100vw - 750px)/2)';
 
 const FONT_SIZE_EXTRA_SMALL = '9px';
 const FONT_SIZE_SMALL = '12px';
