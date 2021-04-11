@@ -23,18 +23,28 @@ export function Freedom(props: FreedomProps) {
     const [freedomMessage, setFreedomMessage] = useState(FreedomMessages.DEFAULT)
     const [messageIntent, setMessageIntent] = useState<Intent>(Intent.PRIMARY)
 
+    // null, null, null => default
+    // no => false
+    // yes, null => default
+    // yes, no, null => default
+    // yes, no, yes => true
+
     const handleFreedomValidation = () => {
-        if (typeof freedomFromValue === 'string' && typeof freedomToValue === 'string') {
-            if (freedomFromValue === 'yes') {
-                if (freedomToValue === 'yes') {
-                    setIsFree(true)
-                }
-                else if (withinReasonValue === 'yes') {
-                    setIsFree(true)
-                }
-                else {
-                    setIsFree(false)
-                }
+        if (freedomFromValue === 'no') {
+            setIsFree(false);
+        }
+        else if (freedomFromValue === 'yes') {
+            if (typeof freedomToValue !== 'string') {
+                setIsFree(null)
+            }
+            else if (freedomToValue === 'yes') {
+                setIsFree(true)
+            }
+            else if (typeof withinReasonValue !== 'string') {
+                setIsFree(null)
+            }
+            else if(withinReasonValue === 'yes') {
+                setIsFree(true)
             }
             else {
                 setIsFree(false)
@@ -52,6 +62,10 @@ export function Freedom(props: FreedomProps) {
                 setFreedomMessage(FreedomMessages.IS_NOT_FREE)
                 setMessageIntent(Intent.DANGER)
             }
+        }
+        else {
+            setFreedomMessage(FreedomMessages.DEFAULT)
+            setMessageIntent(Intent.NONE)
         }
     }, [isFree])
 
@@ -169,7 +183,7 @@ export function Freedom(props: FreedomProps) {
                 I am curious:
                 <ul>
                     <li>
-                        What <i>is</i> significant interference from an external entity? 
+                        What <i>is</i> significant interference from an external entity?
                     </li>
                     <li>
                         What amount of effort (value loss) <i>is</i> within reason for you to gain the required means to act on a given opportunity?
@@ -187,7 +201,7 @@ export function Freedom(props: FreedomProps) {
                     </a></li>
                     <li>
                         <a target="_blank" rel="noopener noreferrer" href="https://plato.stanford.edu/entries/liberty-positive-negative/">
-                            Standford Encyclopedia of Philosophy: Positive and Negative Liberty 
+                            Standford Encyclopedia of Philosophy: Positive and Negative Liberty
                         </a>
                     </li>
                 </ul>
