@@ -5,7 +5,7 @@ import { Minimax } from '../../../lib/components/minimax/v1/minimax'
 
 export function getPosts(): PostProps[] {
     return [
-        {
+        /*{
             id: '13',
             title: 'Ability: The Key Ingredient to motivation, satisfaction, trust, and freedom',
             subtitle: '',
@@ -74,7 +74,7 @@ export function getPosts(): PostProps[] {
             subtitle: 'Am I this?',
             content: 'TODO',
             placeholder: true
-        },
+        },*/
         {
             id: '3',
             title: 'Minimax: How to minimize regret',
