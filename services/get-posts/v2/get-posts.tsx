@@ -1,6 +1,7 @@
 import { PostProps } from '../../../lib/components/post/v2/post'
 
 import { Freedom } from '../../../lib/components/freedom/v1/freedom'
+import { Minimax } from '../../../lib/components/minimax/v1/minimax'
 
 export function getPosts(): PostProps[] {
     return [
@@ -68,16 +69,14 @@ export function getPosts(): PostProps[] {
             id: '3',
             title: 'Minimax: How to minimize regret',
             subtitle: 'Given uncertainty, how do I minimize loss?',
-            content: 'TODO'
+            content: <div><Minimax /></div>
 
         },
         {
             id: '2',
             title: 'The Freedom Test',
             subtitle: 'Do you have freedom',
-            content: <div>
-                <Freedom />
-            </div>
+            content: <Freedom />
         },
         {
             id: '0',

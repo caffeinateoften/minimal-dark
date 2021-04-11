@@ -27,7 +27,7 @@ export function NavBar(props: NavBarProps) {
             <NavbarGroup align={Alignment.RIGHT}>
                 <NavbarHeading>{props.heading}</NavbarHeading>
                 <NavbarDivider />
-                {props.navItems.map(navItem => (<Link href="/"><Button key={navItem.text} className={Classes.MINIMAL} {...navItem} /></Link>))}
+                {props.navItems.map(navItem => (<Link key={navItem.text} href="/"><Button className={Classes.MINIMAL} {...navItem} /></Link>))}
             </NavbarGroup>
         </Navbar>
     )
