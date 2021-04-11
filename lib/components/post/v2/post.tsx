@@ -7,6 +7,7 @@ export interface PostProps {
     title: string
     subtitle: string
     content: React.ReactNode
+    placeholder?: boolean
 }
 
 export function Post(props: PostProps) {
