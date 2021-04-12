@@ -15,8 +15,8 @@ export function PostList(props: PostListProps) {
         <List
             data={props.posts}
             renderItem={(post: ArrayElement<PostListProps['posts']>) => (
-                <Link href={`posts/${post.id}`}>
-                    <div className="post__feed-panel">
+                <Link key={post.id} href={`posts/${post.id}`}>
+                    <div key={post.id} className="post__feed-panel">
                         <style jsx>{`
                             .post__feed-panel {
                                 cursor: pointer;

@@ -14,7 +14,6 @@ export const List: React.FC<ListProps> = (props) => {
                         width: 100%;
                         margin-bottom: 30px;
                     }
-
                     .list__item {
                         width: 100%;
                     }

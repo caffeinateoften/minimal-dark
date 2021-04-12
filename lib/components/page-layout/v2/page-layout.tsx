@@ -1,6 +1,5 @@
 export interface PageLayoutProps {
     header: React.ReactNode
-    children: React.ReactNode
 }
 
 const MARGIN_TOP = '120px'
@@ -13,7 +12,7 @@ const FONT_SIZE_EXTRA_SMALL = '9px';
 const FONT_SIZE_SMALL = '12px';
 const FONT_SIZE_MEDIUM = '12px';
 
-export function PageLayout(props: PageLayoutProps) {
+export const PageLayout: React.FC<PageLayoutProps> = (props) => {
     return (
         <div className='page'>
             <style global jsx>{`
@@ -33,12 +32,12 @@ export function PageLayout(props: PageLayoutProps) {
                 }
 
                 .page-content-container {
-                        position: relative;
-                        max-width: 1100px;
-                        margin-top: ${MARGIN_TOP};
-                        margin-left: ${MARGIN_SIDES_EXTRA_SMALL};
-                        margin-right: ${MARGIN_SIDES_EXTRA_SMALL};
-                        font-size: ${FONT_SIZE_EXTRA_SMALL};
+                    position: relative;
+                    max-width: 1100px;
+                    margin-top: ${MARGIN_TOP};
+                    margin-left: ${MARGIN_SIDES_EXTRA_SMALL};
+                    margin-right: ${MARGIN_SIDES_EXTRA_SMALL};
+                    font-size: ${FONT_SIZE_EXTRA_SMALL};
                 }
                     
                 @media only screen and (min-width: 1000px) {
@@ -57,20 +56,12 @@ export function PageLayout(props: PageLayoutProps) {
                     }
                 }
 
-                .right-sider {
-                    height: 80px;
-                    width: 100px;
-                    backgroundColor: orange;
-                }
-
             `}</style>
             <div>
                 {props.header}
             </div>
             <div className="page-content-container">
                 {props.children}
-            </div>
-            <div className="right-sider">
             </div>
         </div>
     )
