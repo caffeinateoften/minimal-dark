@@ -23,12 +23,6 @@ export function Freedom(props: FreedomProps) {
     const [freedomMessage, setFreedomMessage] = useState(FreedomMessages.DEFAULT)
     const [messageIntent, setMessageIntent] = useState<Intent>(Intent.PRIMARY)
 
-    // null, null, null => default
-    // no => false
-    // yes, null => default
-    // yes, no, null => default
-    // yes, no, yes => true
-
     const handleFreedomValidation = () => {
         if (freedomFromValue === 'no') {
             setIsFree(false);
