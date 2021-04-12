@@ -140,7 +140,9 @@ function MinimaxTable(props: MinimaxTableProps) {
 
 export function Minimax(props: MinimaxProps) {
     return <div>
+        <h6 style={{ color: 'red' }}>This Page is Under Construction.</h6>
         <h2>Payoff Table</h2>
+        <h5>You can edit the cell values below</h5>
         <MinimaxTable {...data} />
     </div>
 }
