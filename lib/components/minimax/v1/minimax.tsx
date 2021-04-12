@@ -61,8 +61,9 @@ function MinimaxTable(props: MinimaxTableProps) {
 
     const cellSetter = (rowIndex: number, columnIndex: number) => {
         const dataKey = getDataKey(rowIndex, columnIndex);
+        const isValid = columnIndex > 0 ? isValidNumber : isValidValue;
         return (value: string) => {
-            const intent = isValidValue(value) ? null : Intent.DANGER;
+            const intent = isValid(value) ? null : Intent.DANGER;
             setSparseState("sparseCellData", dataKey, value);
             setSparseState("sparseCellIntent", dataKey, intent);
         };
@@ -77,7 +78,11 @@ function MinimaxTable(props: MinimaxTableProps) {
     };
 
     const isValidValue = function (value: string) {
-        return /^[a-zA-Z]*$/.test(value);
+        return /^[A-Za-z0-9 _]*[A-Za-z0-9][A-Za-z0-9 _]*$/.test(value);
+    }
+
+    const isValidNumber = function (value: string) {
+        return /^[0-9]*$/.test(value)
     }
 
     const cellValidator = (rowIndex: number, columnIndex: number) => {
