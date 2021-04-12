@@ -37,7 +37,7 @@ export function Freedom(props: FreedomProps) {
             else if (typeof withinReasonValue !== 'string') {
                 setIsFree(null)
             }
-            else if(withinReasonValue === 'yes') {
+            else if (withinReasonValue === 'yes') {
                 setIsFree(true)
             }
             else {
@@ -172,6 +172,12 @@ export function Freedom(props: FreedomProps) {
                         <Radio label="no" value="no" />
                     </RadioGroup>
                 </div>
+            </div>
+            <div className="freedom__scenario-description" style={{ marginTop: '32px' }}>
+                <strong>Do you have the freedom to {scenarioDescription}</strong>?
+            </div>
+            <div className="freedom__answer">
+                <Tag intent={messageIntent}>{freedomMessage}</Tag>
             </div>
             <div className="freedom__the-question">
                 I am curious:
