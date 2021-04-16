@@ -36,7 +36,7 @@ function createRegretSparseCellData(payoffSparseCellData) {
         const dataKey = getDataKey(0, col);
         const value = Number(payoffTableDefaultState.sparseCellData[dataKey]);
         let max = value;
-        for (let row = 0; row < 3; row++) {
+        for (let row = 1; row < 3; row++) {
             const dataKey = getDataKey(row, col);
             const value = Number(payoffTableDefaultState.sparseCellData[dataKey]);
             if (value > max) {
@@ -57,8 +57,33 @@ function createRegretSparseCellData(payoffSparseCellData) {
     return regretSparseCellData
 }
 
-const regretSparseCellData = createRegretSparseCellData(payoffTableDefaultState);
+function createMaxRegretCellData(regretSparseCellData) {
+    const maxValues = []
+    for (let row = 0; row < 3; row++) {
+        const dataKey = getDataKey(row, 1);
+        const value = regretSparseCellData[dataKey]
+        let max = value;
+        for (let col = 2; col <= 3; col++) {
+            const dataKey = getDataKey(row, col);
+            const value = regretSparseCellData[dataKey]
+            if(value > max){
+                max = value;
+            }
+        }
+        maxValues.push(max);
+    }
 
+    const cellData = {
+        '0-1': maxValues[0],
+        '1-1': maxValues[1],
+        '2-1': maxValues[2]
+    }
+    console.log('max regret cell data:', cellData);
+    return cellData
+}
+
+// regret table
+const regretSparseCellData = createRegretSparseCellData(payoffTableDefaultState);
 const regretTableDefaultState: Partial<MinimaxTableProps> = {
     columnNames: ['Choices', 'Event A', 'Event B', 'Event C'],
     sparseCellData: {
@@ -69,19 +94,36 @@ const regretTableDefaultState: Partial<MinimaxTableProps> = {
     sparseCellIntent: {},
     sparseColumnIntents: [],
 }
-
 regretTableDefaultState.sparseCellData = { ...regretTableDefaultState.sparseCellData, ...regretSparseCellData }
+
+// maximum regret per choice table
+const maximumRegretsDefaultState: Partial<MinimaxTableProps> = {
+    columnNames: ['Choices', 'Maximum Regret'],
+    sparseCellData: {
+        '0-0': 'Choice 1',
+        '1-0': 'Choice 2',
+        '2-0': 'Choice 3'
+    },
+    sparseCellIntent: {},
+    sparseColumnIntents: [],
+}
+const maxRegretCellData = createMaxRegretCellData(regretSparseCellData)
+
+maximumRegretsDefaultState.sparseCellData = { ...maximumRegretsDefaultState.sparseCellData, ...maxRegretCellData }
+
 
 interface MinimaxTablesState {
     payoffTableCellData: MinimaxTableProps['sparseCellData']
     regretTableCellData: MinimaxTableProps['sparseCellData']
+    maximumRegretCellData: MinimaxTableProps['sparseCellData']
 }
 
 export const MinimaxIntroPostContainer: React.FC<any> = () => {
 
     const [state, setState] = useState<MinimaxTablesState>({
         payoffTableCellData: payoffTableDefaultState.sparseCellData,
-        regretTableCellData: regretTableDefaultState.sparseCellData
+        regretTableCellData: regretTableDefaultState.sparseCellData,
+        maximumRegretCellData: maximumRegretsDefaultState.sparseCellData
     });
 
     return (
@@ -95,14 +137,25 @@ export const MinimaxIntroPostContainer: React.FC<any> = () => {
                         {...payoffTableDefaultState}
                         sparseCellData={state.payoffTableCellData}
                         onCellUpdate={(dataKey, newValue) => {
-                            const payoffCells = state.payoffTableCellData;
-                            payoffCells[dataKey] = newValue;
-                            const regretSparseCellData = createRegretSparseCellData(payoffCells);
-                            setState({
-                                ...state,
-                                regretTableCellData: regretSparseCellData
-                            })
-                            console.log(state.payoffTableCellData[dataKey])
+                            if (!isNaN(newValue as any)) {
+                                const payoffCells = state.payoffTableCellData;
+                                payoffCells[dataKey] = newValue;
+                                const regretSparseCellData = createRegretSparseCellData(payoffCells);
+                                const maxRegretCellData = createMaxRegretCellData(regretSparseCellData)
+                                setState({
+                                    ...state,
+                                    regretTableCellData: {
+                                        ...regretTableDefaultState.sparseCellData,
+                                        ...regretSparseCellData
+                                    },
+                                    maximumRegretCellData: {
+                                        ...maximumRegretsDefaultState.sparseCellData,
+                                        ...maxRegretCellData
+                                    }
+                                })
+                                console.log(state.payoffTableCellData[dataKey])
+                            }
+
                         }}
                     />
                 </Col>
@@ -113,13 +166,30 @@ export const MinimaxIntroPostContainer: React.FC<any> = () => {
                     <MinimaxTable
                         {...regretTableDefaultState}
                         sparseCellData={state.regretTableCellData}
-                        onCellUpdate={(dataKey, newValue) => {
-                            console.log('regretcell dataKey:', dataKey);
-                            console.log('regretcell newValue:', newValue);
-                        }}
+                        onCellUpdate={() => { }}
                     />
+                </Col>
+            </Row>
+            <Row>
+                <Col span={24}>
+                    <h2>Maxium Regrets Per Choice</h2>
+                    <MinimaxTable
+                        {...maximumRegretsDefaultState}
+                        sparseCellData={state.maximumRegretCellData}
+                        onCellUpdate={() => { }}
+                    />
+                </Col>
+            </Row>
+            <Row>
+                <Col span={24}>
+                    <h2>Best choice to minimize regret:</h2>
+                    {
+                        
+                    }
                 </Col>
             </Row>
         </>
     )
 }
+
+
