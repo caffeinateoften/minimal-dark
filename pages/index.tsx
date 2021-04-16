@@ -12,6 +12,7 @@ export default function Home() {
           <Heading>Latest</Heading>,
           <PostList posts={getPosts()}></PostList>
         ]}
+        // TODO: use antd grid system instead of this terrible List component
       renderItem={((item) => item)}
     />
   )

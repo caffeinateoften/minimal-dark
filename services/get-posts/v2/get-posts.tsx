@@ -1,7 +1,8 @@
 import { PostProps } from '../../../lib/components/post/v2/post'
 
 import { Freedom } from '../../../lib/components/freedom/v1/freedom'
-import { Minimax } from '../../../lib/components/minimax/v1/minimax'
+import { MinimaxIntroPostContainer } from '../../../lib/components/minimax/minimax-intro-post-container'
+import { DiligentWriter } from '../../../lib/components/diligent-writer/v1/diligent-writer'
 
 export function getPosts(): PostProps[] {
     return [
@@ -79,7 +80,7 @@ export function getPosts(): PostProps[] {
             id: '3',
             title: 'Minimax: How to minimize regret',
             subtitle: 'Given uncertainty, how do I minimize loss?',
-            content: <div><Minimax /></div>,
+            content: <MinimaxIntroPostContainer />,
             placeholder: true
         },
         {
@@ -92,64 +93,7 @@ export function getPosts(): PostProps[] {
             id: '1',
             title: 'How does a diligent writer write a sentence?',
             subtitle: '"...if thought corrupts language, language can also corrupt thought." - George Orwell',
-            content: <div>
-                <h4>
-                    They ask themself:
-            </h4>
-                <ol>
-                    <li>
-                        What am I trying to say?
-                </li>
-                    <li>
-                        What words will express it?
-                </li>
-                    <li>
-                        What image or idiom will make it clearer?
-                </li>
-                    <li>
-                        Is this image fresh enough to have an effect?
-                </li>
-                    <li>
-                        Could I put it more shortly?
-                </li>
-                    <li>
-                        Have I said anything that is avoidably ugly?
-                </li>
-                </ol>
-
-                <h4>
-                    They try to follow these rules:
-            </h4>
-
-                <ul>
-                    <li>
-                        (i) Never use a metaphor, simile, or other figure of speech which you are used to seeing in print.
-                </li>
-                    <li>
-                        (ii) Never use a long word where a short one will do.
-                </li>
-                    <li>
-                        (iii) If it is possible to cut a word out, always cut it out.
-                </li>
-                    <li>
-                        (iv) Never use the passive where you can use the active.
-                </li>
-                    <li>
-                        (v) Never use a foreign phrase, a scientific word, or a jargon word if you can think of an everyday English equivalent.
-                </li>
-                    <li>
-                        (vi) Break any of these rules sooner than say anything outright barbarous.
-                </li>
-                </ul>
-                <div>
-                    <h3>Sources</h3>
-                    <ul>
-                        <li>
-                            Orwell, George. Politics and the English Language. Renard Press, 2021. 
-                        </li>
-                    </ul>
-                </div>
-            </div>
+            content: <DiligentWriter />
         },
         {
             id: '0',

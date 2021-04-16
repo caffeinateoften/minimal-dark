@@ -1,47 +1,26 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Column, Table, EditableCell, EditableName, ColumnHeaderCell } from "@blueprintjs/table";
 import { Intent } from '@blueprintjs/core'
 
 import '@blueprintjs/table/lib/css/table.css'
 
-export interface MinimaxProps {
-
-}
-
-interface MinimaxTableProps {
+export interface MinimaxTableProps {
+    onCellUpdate: (dataKey: string, newValue: string) => void
     columnNames?: string[];
     sparseCellData?: { [key: string]: string };
     sparseCellIntent?: { [key: string]: Intent };
     sparseColumnIntents?: Intent[];
 }
 
-const data: MinimaxTableProps = {
-    columnNames: ['Choices', 'Event A', 'Event B', 'Event C'],
-    sparseCellData: {
-        '0-0': 'Choice 1',
-        '1-0': 'Choice 2',
-        '2-0': 'Choice 3',
-
-        '0-1': '40',
-        '1-1': '70',
-        '2-1': '53',
-
-        '0-2': '45',
-        '1-2': '30',
-        '2-2': '45',
-
-        '0-3': '5',
-        '1-3': '-13',
-        '2-3': '5'
-    },
-    sparseCellIntent: {
-        
-    },
-    sparseColumnIntents: [],
-}
-
-function MinimaxTable(props: MinimaxTableProps) {
+export const MinimaxTable: React.FC<MinimaxTableProps> = (props) => {
     const [state, setState] = useState<MinimaxTableProps>(props)
+
+    useEffect(() => {
+        setState({
+            ...state,
+            sparseCellData: props.sparseCellData
+        })
+    }, [props.sparseCellData])
 
     const getDataKey = (rowIndex: number, columnIndex: number) => {
         return `${rowIndex}-${columnIndex}`;
@@ -85,12 +64,13 @@ function MinimaxTable(props: MinimaxTableProps) {
         return /^[0-9]*$/.test(value)
     }
 
-    const cellValidator = (rowIndex: number, columnIndex: number) => {
+    const cellValidator = (rowIndex: number, columnIndex: number, updatedCb) => {
         const dataKey = getDataKey(rowIndex, columnIndex);
         return (value: string) => {
             const intent = isValidValue(value) ? null : Intent.DANGER;
             setSparseState("sparseCellIntent", dataKey, intent);
             setSparseState("sparseCellData", dataKey, value);
+            updatedCb(dataKey, value) // TODO: be less dumb
         };
     };
 
@@ -122,8 +102,8 @@ function MinimaxTable(props: MinimaxTableProps) {
             <EditableCell
                 value={value == null ? "" : value}
                 intent={state.sparseCellIntent[dataKey]}
-                onCancel={cellValidator(rowIndex, columnIndex)}
-                onChange={cellValidator(rowIndex, columnIndex)}
+                onCancel={cellValidator(rowIndex, columnIndex, props.onCellUpdate)}
+                onChange={cellValidator(rowIndex, columnIndex, props.onCellUpdate)}
                 onConfirm={cellSetter(rowIndex, columnIndex)}
             />
         )
@@ -137,13 +117,3 @@ function MinimaxTable(props: MinimaxTableProps) {
         <Table numRows={3}>{columns}</Table>
     )
 }
-
-export function Minimax(props: MinimaxProps) {
-    return <div>
-        <h6 style={{ color: 'red' }}>This Page is Under Construction.</h6>
-        <h2>Payoff Table</h2>
-        <h5>You can edit the cell values below</h5>
-        <MinimaxTable {...data} />
-    </div>
-}
-

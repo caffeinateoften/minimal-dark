@@ -12,7 +12,7 @@ export function PostList(props: PostListProps) {
         <List
             data={props.posts}
             renderItem={(post) => (
-                <Link href={`posts/${post.id}`}>
+                <Link key={post.id} href={`posts/${post.id}`}>
                     <InfoCard interactable={true}>
                         {post.title}
                     </InfoCard>
