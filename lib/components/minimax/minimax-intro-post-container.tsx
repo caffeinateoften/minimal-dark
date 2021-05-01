@@ -66,7 +66,7 @@ function createMaxRegretCellData(regretSparseCellData) {
         for (let col = 2; col <= 3; col++) {
             const dataKey = getDataKey(row, col);
             const value = regretSparseCellData[dataKey]
-            if(value > max){
+            if (value > max) {
                 max = value;
             }
         }
@@ -127,7 +127,7 @@ export const MinimaxIntroPostContainer: React.FC<any> = () => {
     });
 
     return (
-        <>
+        <div style={{ color: 'rgb(156, 132, 107)' }}>
             <h6 style={{ color: 'red' }}>This Page is Under Construction.</h6>
             <Row>
                 <Col span={24}>
@@ -183,13 +183,56 @@ export const MinimaxIntroPostContainer: React.FC<any> = () => {
             <Row>
                 <Col span={24}>
                     <h2>Best choice to minimize regret:</h2>
-                    {
-                        
-                    }
+                    <h1 style={{ fontWeight: 900 }}>
+                        {getMinimumRegretChoice(state.maximumRegretCellData)}
+                    </h1>
                 </Col>
             </Row>
-        </>
+            <br/>
+            <Row>
+                <Col>
+                    <blockquote>
+                        <i>“The value of any commodity, therefore, to the person who possesses it,
+                        and who means not to use or consume it himself,
+                        but to exchange it for other commodities, is equal to the quantity of labour
+                        which it enables him to purchase or command. Labour, therefore, is the real
+                        measure of the exchangeable value of all commodities. The real price of everything,
+                        what everything really costs to the man who wants to acquire it, is the toil
+                            and trouble of acquiring it.” - Smith, Adam. Wealth of Nations. </i> <br />
+                    </blockquote>
+                </Col>
+            </Row>
+            <br/>
+            <Row>
+                <Col>
+                    <ul style={{ color: 'black' }}>
+                        <li>
+                            As soon as any information is provided such that one could attach probability to likelihood of an event occurring, then this approach needs to be extended to find an optimal choice.
+                        </li>
+                        <li>
+                            Q to ask self: What amount of effort is worth my time to acquire information which enables me to accurately attach probabilities to a set of possible events?
+                        </li>
+                    </ul>
+                </Col>
+            </Row>
+        </div>
     )
 }
 
+function getMinimumRegretChoice(maximumRegretCellData) {
+    let bestChoiceDataKey;
+    let min;
+
+    Object.entries(maximumRegretCellData).map(([key, value]) => {
+        if (typeof value === 'number') {
+            if (typeof min === 'undefined' || value < min) {
+                bestChoiceDataKey = key;
+                min = value;
+            }
+        }
+    });
+
+    let colValueToTheLeft = String(bestChoiceDataKey.slice(0, 2)) + (Number(bestChoiceDataKey[2]) - 1)
+    return maximumRegretCellData[colValueToTheLeft];
+}
 
