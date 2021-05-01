@@ -68,20 +68,20 @@ export function getPosts(): PostProps[] {
             subtitle: 'Given uncertainty, how do I minimize loss of my freedom?',
             content: 'TODO',
             placeholder: true
-        },
+        },*/
         {
             id: '4',
             title: 'What is a Technocrat?',
-            subtitle: 'Am I this?',
+            subtitle: '',
             content: 'TODO',
             placeholder: true
-        },*/
+        },
         {
             id: '3',
             title: 'Minimax: How to minimize regret',
             subtitle: 'Given uncertainty, how do I minimize loss?',
             content: <MinimaxIntroPostContainer />,
-            placeholder: true
+            placeholder: false
         },
         {
             id: '2',
