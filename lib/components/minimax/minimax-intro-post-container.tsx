@@ -128,7 +128,6 @@ export const MinimaxIntroPostContainer: React.FC<any> = () => {
 
     return (
         <div style={{ color: 'rgb(156, 132, 107)' }}>
-            <h6 style={{ color: 'red' }}>This Page is Under Construction.</h6>
             <Row>
                 <Col span={24}>
                     <h2>Payoff Table</h2>
