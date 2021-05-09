@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { TextArea, Intent, RadioGroup, Radio, Tag } from '@blueprintjs/core'
 import { handleStringChange } from "@blueprintjs/docs-theme";
+import { Resources } from '../../resources/v1/resources';
 
 export interface FreedomProps {
 
@@ -97,10 +98,6 @@ export function Freedom(props: FreedomProps) {
                     padding-top: 12px;
                 }
 
-                .freedom__resources {
-                    margin-top: 48px;
-                }
-
             `}</style>
             <div className="freedom__scenario-description">
                 <strong>to {scenarioDescription}</strong>?
@@ -193,19 +190,16 @@ export function Freedom(props: FreedomProps) {
                     </li>
                 </ul>
             </div>
-            <div className="freedom__resources">
-                <h2>Interesting resources</h2>
-                <ul>
-                    <li><a target="_blank" rel="noopener noreferrer" href="https://open.spotify.com/episode/3I7GkvKoRzJklbf5KwNPyF?si=PdZSq6_pRbeCMy-SSF3iIA">
-                        Episode #140 Isaiah Berlin pt. 1 - Pluralism
-                    </a></li>
-                    <li>
-                        <a target="_blank" rel="noopener noreferrer" href="https://plato.stanford.edu/entries/liberty-positive-negative/">
-                            Standford Encyclopedia of Philosophy: Positive and Negative Liberty
-                        </a>
-                    </li>
-                </ul>
-            </div>
+            <Resources links={[
+                {
+                    text: 'Episode #140 Isaiah Berlin pt. 1 - Pluralism',
+                    url: 'https://open.spotify.com/episode/3I7GkvKoRzJklbf5KwNPyF?si=PdZSq6_pRbeCMy-SSF3iIA'
+                },
+                {
+                    text: 'Standford Encyclopedia of Philosophy: Positive and Negative Liberty',
+                    url: 'https://plato.stanford.edu/entries/liberty-positive-negative/'
+                }
+            ]} />
         </div>
     )
 }

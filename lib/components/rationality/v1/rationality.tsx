@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { Row, Col } from 'antd'
 
+import { Resources } from '../../resources/v1/resources'
+
 export interface RationalityProps { }
 
 interface ContextState {
@@ -35,6 +37,12 @@ export const Rationality: React.FC<RationalityProps> = (props) => {
                     </ul>
                 </Col>
             </Row>
+            <Resources links={[
+                {
+                    text: 'stanford.edu - Todd Davies, Decision Behavior: Theory and Evidence: A Framework for Rationality',
+                    url: 'https://web.stanford.edu/class/symbsys170/Rationality.pdf'
+                }
+            ]} />
         </>
     )
 }
