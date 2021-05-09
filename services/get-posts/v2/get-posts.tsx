@@ -3,6 +3,7 @@ import { PostProps } from '../../../lib/components/post/v2/post'
 import { Freedom } from '../../../lib/components/freedom/v1/freedom'
 import { MinimaxIntroPostContainer } from '../../../lib/components/minimax/minimax-intro-post-container'
 import { DiligentWriter } from '../../../lib/components/diligent-writer/v1/diligent-writer'
+import { Rationality } from '../../../lib/components/rationality/v1/rationality'
 
 export function getPosts(): PostProps[] {
     return [
@@ -71,9 +72,9 @@ export function getPosts(): PostProps[] {
         },*/
         {
             id: '4',
-            title: 'What is a Technocrat?',
+            title: 'Rationality',
             subtitle: '',
-            content: 'TODO',
+            content: <Rationality />,
             placeholder: true
         },
         {

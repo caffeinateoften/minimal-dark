@@ -19,7 +19,6 @@ const navBarData: NavBarProps = {
   ]
 }
 
-
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <PageLayout
