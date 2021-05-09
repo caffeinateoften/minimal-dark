@@ -20,13 +20,13 @@ export const Rationality: React.FC<RationalityProps> = (props) => {
         <>
             <Row>
                 <Col>
-                    <i>Intersubjective rationality:</i> The actions of an <b>agent</b> <i>A</i> are <i>intersubjectively rational</i> in a <b>context</b> <i>C</i> to the extent that the <b>evidence</b> available to and the <b>constraints</b> as understood by the collection <i>B</i> of <b>agents</b> in <i>C</i> are consistent with the achievement of <i>A</i>'s <b>objectives.</b>
+                    <i>Intersubjective rationality:</i> The actions of an <b>agent</b> <i>A</i> are <i>intersubjectively rational</i> in a <b>context</b> <i>C</i> to the extent that the <b>evidence</b> available to and the <b>constraints</b> as understood by the collection <i>B</i> of <b>agents</b> in <b>context</b> <i>C</i> are consistent with the achievement of <i>A</i>'s <b>objectives.</b>
                 </Col>
             </Row>
             <br />
             <Row>
                 <Col>
-                    <h3>Why focus on intersubjectively rationality:</h3>
+                    <h3>Why focus on intersubjective rationality:</h3>
                     <ul>
                         <li>
                             <i>Subjective rationality</i> is too individual focused to be useful. An individual <b>agent</b> rarely is aware of all <b>evidence</b> and all <b>constraints</b> that exist with a <b>context</b> C.
